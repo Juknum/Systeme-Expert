@@ -1,0 +1,81 @@
+***********Données***********
+
+Regle : liste dont le dernier élément est la conclusion de ladite règle.
+
+*****************************
+
+
+
+*****************************
+********ALGORITHMES**********
+*****************************
+
+créerRegle(Regle nouvelleRegle) : liste
+Debut
+	nouvelleRegle <- new(regle)
+	retourner nouvelleRegle
+Fin
+
+*****************************
+
+nouvelleProposition(String proposition) : Regle
+Debut
+	nouvelleProposition <- new(proposition)
+	retourner nouvelleProposition
+Fin
+
+*****************************
+
+est_vide(Regle r) : Booléen
+Debut
+	si r est NULL
+		retourner VRAI
+	sinon
+		retourner FAUX
+Fin
+
+*****************************
+
+premisse(Regle r) : string
+Debut
+	si est_vide(r) est VRAI alors
+		reourner NULL
+	sinon
+		retourner premisse(r)
+Fin
+
+*****************************
+
+conclusion(Regle r) : string
+Debut
+	si est_vide(r) est VRAI alors
+		retourner NULL
+	sinon
+		tant que est_vide(suiv(r)) est FAUX faire
+			r <- suiv(r)
+		fin tant que
+		retourner premisse(r)
+Fin
+
+*****************************
+
+ajouter_proposition(Regle r, string proposition) : Regle
+Debut
+	si est_vide(r) est VRAI alors
+		nouvelleProposition(r)
+		premisse(r) <- proposition
+		suiv(r) <- NULL
+	sinon
+		tant que est_vide(r) est FAUX faire
+			r <- suiv(r)
+		fin tant que
+		nouvelleProposition(proposition)
+		premisse(proposition) <- proposition
+		suiv(proposition) <- NULL
+		suiv (r) <- proposition
+	fin sinon
+	retourner r
+Fin
+
+*****************************
+
