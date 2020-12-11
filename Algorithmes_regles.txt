@@ -26,6 +26,14 @@ Fin
 
 *****************************
 
+nouvelleConclusiuon(String conclusion) : Regle
+Debut
+	nouvelleConclusion <- new(conclusion)
+	retourner nouvelleConclusion
+Fin
+
+*****************************
+
 est_vide(Regle r) : Booléen
 Debut
 	si r est NULL
@@ -33,6 +41,22 @@ Debut
 	sinon
 		retourner FAUX
 Fin
+
+*****************************
+
+comptage_val(Regle r) : integer
+Debut
+c = 0
+Regle l = r
+	si r est NULL
+		retourner 0
+	sinon
+		tant que est_vide(l) faire
+			c = c + 1
+			l <- suiv(l)
+		fin tant que
+	retourner c
+Fin 
 
 *****************************
 
@@ -54,7 +78,8 @@ Debut
 		tant que est_vide(suiv(r)) est FAUX faire
 			r <- suiv(r)
 		fin tant que
-		retourner premisse(r)
+		conclusion(r) <- r
+		retourner conclusion(r)
 Fin
 
 *****************************
@@ -62,21 +87,50 @@ Fin
 ajouter_proposition(Regle r, string proposition) : Regle
 Debut
 	si est_vide(r) est VRAI alors
-		nouvelleProposition(r)
+		nouvelleProposition(proposition)
 		premisse(r) <- proposition
 		suiv(r) <- NULL
 	sinon
-		tant que est_vide(r) est FAUX faire
+		tant que est_vide(suiv(r)) est FAUX faire
 			r <- suiv(r)
 		fin tant que
 		nouvelleProposition(proposition)
-		premisse(proposition) <- proposition
-		suiv(proposition) <- NULL
-		suiv (r) <- proposition
+		conclusion(r) <- r
+		r <- proposition
+		suiv(r) <- conclusion 
 	fin sinon
 	retourner r
 Fin
 
 *****************************
 
+creer_conclusion(Regle r, string conclusion) : Regle
+Debut
+	si est_vide(r) est VRAI alors
+		conclusion est NULL
+	sinon
+		tant que est_vide(suiv(r)) est FAUX faire
+			r <- suiv(r)
+		fin tant que
+		nouvelleConclusion(conclusion)
+		suiv(r) <- conclusion
+Fin
+
+*****************************
+
+est_premisse(Regle r, string proposition) : Booléen
+Debut
+contient = FAUX
+Regle l = r
+	tant que est_vide(l) est FAUX et contient est FAUX faire
+		si val(l) = proposition alors
+			contient = VRAI 
+		sinon
+			l <- reste(l)
+	fin tant que 
+	retourner contient
+fin 
+
+*****************************
+			
 
