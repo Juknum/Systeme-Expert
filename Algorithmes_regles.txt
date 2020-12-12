@@ -123,15 +123,7 @@ Fin
 
 est_premisse(Regle r, string proposition) : Booléen
 Debut
-contient = FAUX
-Regle l = r
-	tant que est_vide(l) est FAUX et contient est FAUX faire
-		si val(l) = proposition alors
-			contient = VRAI 
-		sinon
-			l <- reste(l)
-	fin tant que 
-	retourner contient
+	retourner val(r) = proposition
 fin 
 
 *****************************
