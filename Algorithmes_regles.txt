@@ -122,8 +122,15 @@ Fin
 *****************************
 
 est_premisse(Regle r, string proposition) : Booléen
+	*/ Algorithme récursif */
 Debut
-	retourner val(r) = proposition
+	si est_vide(r) est VRAI alors
+		retourner FAUX
+	sinon
+	si element_tete(r) = proposition
+		retourner VRAI
+	fin si
+	retourner est_premisse(element_queue(r), proposition)
 fin 
 
 *****************************
