@@ -51,9 +51,9 @@ Regle l = r
 	si r est NULL
 		retourner 0
 	sinon
-		tant que est_vide(l) faire
+		tant que est_vide(l) est FAUX faire
 			c = c + 1
-			l <- suiv(l)
+			l <- reste(l)
 		fin tant que
 	retourner c
 Fin 
@@ -72,48 +72,51 @@ Fin
 
 conclusion(Regle r) : string
 Debut
+Regle l = r
 	si est_vide(r) est VRAI alors
 		retourner NULL
 	sinon
-		tant que est_vide(suiv(r)) est FAUX faire
-			r <- suiv(r)
+		tant que est_vide(l) est FAUX faire
+			l <- reste(l)
 		fin tant que
-		conclusion(r) <- r
-		retourner conclusion(r)
+		conclusion(l) <- l
+		retourner conclusion(l)
 Fin
 
 *****************************
 
 ajouter_proposition(Regle r, string proposition) : Regle
 Debut
-	si est_vide(r) est VRAI alors
+Regle l = r
+	si est_vide(l) est VRAI alors
 		nouvelleProposition(proposition)
-		premisse(r) <- proposition
-		suiv(r) <- NULL
+		premisse(l) <- proposition
+		suiv(l) <- NULL
 	sinon
-		tant que est_vide(suiv(r)) est FAUX faire
-			r <- suiv(r)
+		tant que est_vide(l) est FAUX faire
+			l <- suiv(l)
 		fin tant que
 		nouvelleProposition(proposition)
-		conclusion(r) <- r
-		r <- proposition
-		suiv(r) <- conclusion 
+		conclusion(l) <- l
+		l <- proposition
+		suiv(l) <- conclusion 
 	fin sinon
-	retourner r
+	retourner l
 Fin
 
 *****************************
 
 creer_conclusion(Regle r, string conclusion) : Regle
 Debut
-	si est_vide(r) est VRAI alors
+Regle l = r
+	si est_vide(l) est VRAI alors
 		conclusion est NULL
 	sinon
-		tant que est_vide(suiv(r)) est FAUX faire
-			r <- suiv(r)
+		tant que est_vide(suiv(l)) est FAUX faire
+			l <- suiv(l)
 		fin tant que
 		nouvelleConclusion(conclusion)
-		suiv(r) <- conclusion
+		suiv(l) <- conclusion
 Fin
 
 *****************************
