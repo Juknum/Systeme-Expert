@@ -121,7 +121,7 @@ Fin
 
 *****************************
 
-est_premisse(Regle r, string proposition) : Booléen
+est_proposition(Regle r, string proposition) : Booléen
 	*/ Algorithme récursif */
 Debut
 	si est_vide(r) est VRAI alors
@@ -130,9 +130,37 @@ Debut
 	si element_tete(r) = proposition
 		retourner VRAI
 	fin si
-	retourner est_premisse(element_queue(r), proposition)
+	retourner est_proposition(element_queue(r), proposition)
 fin 
 
 *****************************
+
+retirer_proposition(Regle r, string proposition) : Regle
+Debut
+c = 0
+	si est_vide(r) est VRAI alors
+		retourner r 
+	sinon
+		si est_proposition(r) est FAUX alors
+			retourner r 
+		sinon
+			tant que est_vide(suiv(r)) est FAUX et val(r) != proposition faire
+				r <- suiv(r)
+				c = c + 1
+			fin tant que
+			tant que est_vide(r) est FAUX faire 
+				pour i allant de c a comptage_val(r) faire
+					r = suiv(r)
+				fin pour
+			fin tant que
+		fin si 
+	fin si 
+	retourner r 
+Fin 
+
+*****************************
+
+
+
 			
 
