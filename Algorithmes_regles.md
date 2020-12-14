@@ -3,7 +3,7 @@ Règle : liste dont le dernier élément est la conclusion de ladite règle.
 
 ## Algorithmes:
 ```pseudocode
-créerRegle(Regle nouvelleRegle) : liste
+créerRegle(Regle nouvelleRegle) : Règle
 Debut
 	nouvelleRegle <- new(regle)
 	retourner nouvelleRegle
