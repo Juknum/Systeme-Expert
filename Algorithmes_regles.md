@@ -131,23 +131,24 @@ fin
 retirer_proposition(Regle r, string proposition) : Regle
 Debut
 c = 0
-	si est_vide(r) est VRAI alors
-		retourner r 
+Regle l =r
+	si est_vide(l) est VRAI alors
+		retourner l 
 	sinon
-		si est_proposition(r) est FAUX alors
-			retourner r 
+		si est_proposition(l) est FAUX alors
+			retourner l 
 		sinon
-			tant que est_vide(suiv(r)) est FAUX et val(r) != proposition faire
-				r <- suiv(r)
+			tant que est_vide(suiv(l)) est FAUX et l != proposition faire
+				l <- suiv(l)
 				c = c + 1
 			fin tant que
-			tant que est_vide(r) est FAUX faire 
-				pour i allant de c a comptage_val(r) faire
-					r = suiv(r)
+			tant que est_vide(l) est FAUX faire 
+				pour i allant de c a comptage_val(l) faire
+					l = suiv(l)
 				fin pour
 			fin tant que
 		fin si 
 	fin si 
-	retourner r 
+	retourner l 
 Fin 
 ```

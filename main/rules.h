@@ -28,7 +28,7 @@ typedef struct Element {
 /*
  * Prototypes:
 */
-List createRule(Rule new_rule);
-Bool isEmpty(Rule rule);
+List createRule(Regle new_rule);
+Bool isEmpty(Regle rule);
 
 #endif
