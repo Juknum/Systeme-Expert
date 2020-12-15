@@ -152,3 +152,47 @@ Regle l =r
 	retourner l 
 Fin 
 ```
+
+```pseudocode
+test_premisse(Regle r) : Booléen
+Debut
+	si est_vide(r) est VRAI alors
+		retourner VRAI
+	sinon 
+		si est_vide(suiv(r)) est VRAI alors
+			retourner VRAI
+		sinon
+			retourner FAUX
+		fin si
+	fin si
+Fin 
+```
+
+```pseudocode
+acces_tete_premisse(Regle r) : string
+Debut
+	si est_vide(r) est VRAI alors
+		retourner NULL
+	sinon
+		si est_vide(suiv(r)) est VRAI alors
+			retourner NULL
+		sinon
+			retourner r
+		fin si
+	fin si
+fin
+```
+
+```pseudocode
+acces_conclusion(Regle r) : string
+Debut
+	si est_vide(r) est VRAI alors
+		retourner NULL
+	sinon
+		tant que est_vide(suiv(r)) est FAUX faire
+			r <- suiv(r)
+		fin tant que
+		retourner r
+	fin si
+fin 
+```

@@ -121,7 +121,7 @@ deleteProposition(Regle r, char proposition){
 			++c;
 		}
 		while(isEmpty(j) = false){
-			for(i = c; i<lengthRule(j); i++){
+			for(int i = c; i<lengthRule(j); i++){
 				j = j->next;
 			}
 		}
