@@ -154,7 +154,7 @@ Fin
 ```
 
 ```pseudocode
-test_premisse(Regle r) : Booléen
+est_vide_premisse(Regle r) : Booléen
 Debut
 	si est_vide(r) est VRAI alors
 		retourner VRAI
@@ -162,7 +162,7 @@ Debut
 		si est_vide(suiv(r)) est VRAI alors
 			retourner VRAI
 		sinon
-			retourner FAUX
+		retourner FAUX
 		fin si
 	fin si
 Fin 

@@ -107,7 +107,7 @@ Bool isProposition(Regle r, char proposition){
 
 /*------------------------------------*/
 
-deleteProposition(Regle r, char proposition){
+Regle deleteProposition(Regle r, char proposition){
 	int c = 0;
 	Regle l = r;
 	Regle j = r; 
@@ -128,4 +128,47 @@ deleteProposition(Regle r, char proposition){
 	}
 	return j;
 	
+}
+
+/*------------------------------------*/
+
+Bool isEmptyPremisse(Regle r){
+	if(isEmpty(r)){
+		return true;
+	}
+	else if(isEmpty(r->next)){
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+/*------------------------------------*/
+
+char headValuePremisse(Regle r){
+	if(isEmpty(r)){
+		return NULL;
+	}
+	else if(isEmpty(r->next)){
+		return NULL;
+	}
+	else {
+		return head_element(r);
+	}
+}
+
+/*------------------------------------*/
+
+char valueConclusion(Regle r){
+Regle l = r;
+	if(isEmpty(l)){
+		return NULL;
+	}
+	else{
+		while(isEmpty(l->next) = false){
+			l = l->next;
+		}
+		return l;
+	}
 }
