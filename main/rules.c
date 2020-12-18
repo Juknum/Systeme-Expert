@@ -8,7 +8,7 @@ Bool isEmpty(Regle rule){
 
 /*------------------------------------*/
 
-List createRule(Rule new_rule){
+Regle createRule(Regle new_rule){
 	return new_rule <- new(rule); // A REECRIRE
 }
 
@@ -22,7 +22,7 @@ Regle newConclusion(char conclusion){
 
 /*------------------------------------*/
 
-int lengthRule(Rule r){
+int lengthRule(Regle r){
 	int size = 0;
 	Regle l = r;
 
@@ -39,12 +39,12 @@ int lengthRule(Rule r){
 
 /*------------------------------------*/
 
-char getPremisse(Rule r){
+char getPremisse(Regle r){
 	if (isEmpty(r)) return NULL;
 	return premisse(r); // A REECRIRE
 }
 
-char getConclusion(Rule r){
+char getConclusion(Regle r){
 	Regle l = r;
 
 	if(isEmpty(l)) {
@@ -60,7 +60,7 @@ char getConclusion(Rule r){
 
 /*------------------------------------*/
 
-Regle addProposition(Regle r, char proposition){
+void addProposition(Regle r, char proposition){
 	Regle l = r;
 
 	if (isEmpty(l)) {
@@ -79,7 +79,7 @@ Regle addProposition(Regle r, char proposition){
 
 /*------------------------------------*/
 
-Regle createConclusion(Regle r, char conclusion){
+void createConclusion(Regle r, char conclusion){
 	Regle l = r;
 	if(isEmpty(l)) {
 		conclusion = NULL;
@@ -107,7 +107,7 @@ Bool isProposition(Regle r, char proposition){
 
 /*------------------------------------*/
 
-Regle deleteProposition(Regle r, char proposition){
+void deleteProposition(Regle r, char proposition){
 	int c = 0;
 	Regle l = r;
 	Regle j = r; 
