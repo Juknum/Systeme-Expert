@@ -1,6 +1,9 @@
 #ifndef __RULES__H__
 #define __RULES__H__
 
+#include <stdlib.h>
+#include <stdio.h>
+
 /*
  * Booléen:
 */
@@ -35,7 +38,7 @@ typedef struct Element {
  * @param new_rule variable acceuillant la nouvelle regle
  * @return regle nouvellement créée
  */
-Regle createRule(Regle new_rule);
+Regle* createRule();
 
 /**********************************
  * @brief fonction testant si la regle est vide ou non

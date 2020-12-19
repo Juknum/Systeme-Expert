@@ -1,3 +1,4 @@
+#include "rules.h"
 
 /*------------------------------------*/
 
@@ -8,8 +9,9 @@ Bool isEmpty(Regle rule){
 
 /*------------------------------------*/
 
-Regle createRule(Regle new_rule){
-	return new_rule <- new(rule); // A REECRIRE
+Regle* createRule(){
+	Regle* new = (Regle*)malloc(sizeof(Regle));
+	return new;
 }
 
 Regle newProposition(char proposition){
@@ -54,7 +56,7 @@ char getConclusion(Regle r){
 		while(l != NULL){
 			l = l->next;
 		}
-		return conclusion(l) <- l; // A REECRIRE
+		return l; // A REECRIRE
 	}
 }
 
@@ -85,7 +87,7 @@ void createConclusion(Regle r, char conclusion){
 		conclusion = NULL;
 	}
 	else {
-		while(isEmpty(l->next) = false){
+		while(isEmpty(l->next) == false){
 			l = l->next;
 		}
 		newConclusion(conclusion);
@@ -99,7 +101,7 @@ Bool isProposition(Regle r, char proposition){
 	if(isEmpty(r)) {
 		return false;
 	}
-	else if(head_element(r) = proposition) {
+	else if(head_element(r) == proposition) {
 		return true;
 	}
 	return isProposition(tail_element(r), proposition);
@@ -116,11 +118,11 @@ void deleteProposition(Regle r, char proposition){
 	}
 	else
 	{
-		while(isEmpty(l) = false && l != proposition){
+		while(isEmpty(l) == false && l != proposition){
 			l = l->next;
 			++c;
 		}
-		while(isEmpty(j) = false){
+		while(isEmpty(j) == false){
 			for(int i = c; i<lengthRule(j); i++){
 				j = j->next;
 			}
@@ -166,7 +168,7 @@ Regle l = r;
 		return NULL;
 	}
 	else{
-		while(isEmpty(l->next) = false){
+		while(isEmpty(l->next) == false){
 			l = l->next;
 		}
 		return l;
