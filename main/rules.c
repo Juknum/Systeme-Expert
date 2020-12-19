@@ -54,7 +54,7 @@ char getConclusion(Regle r){
 		while(l != NULL){
 			l = l->next;
 		}
-		return conclusion(l) <- l // A REECRIRE
+		return conclusion(l) <- l; // A REECRIRE
 	}
 }
 
