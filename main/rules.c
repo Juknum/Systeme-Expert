@@ -84,7 +84,7 @@ Regle addProposition(Regle r, char* content){
 /*------------------------------------*/
 
 Regle createConclusion(Regle r, char* content){
-	if(isEmptyPremisse(r)) {
+	if(isEmptyPremisse(r.premisse)) {
 		printf("La prémisse de cette règle est vide, impossible de faire un conclusion");
 	}
 	else {
