@@ -3,21 +3,22 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 /*
  * Booléen:
 */
 typedef enum {
-	false = 0,
-	true = 1
+	false,
+	true
 } Bool;
 
 /*
  * Définition d'une Proposition :
 */
 typedef struct proposition {
-	char* contenu;
-	struct proposition *next;
+	char* content;
+	struct proposition* next;
 } Proposition;
 
 typedef Proposition* Premisse;
@@ -29,7 +30,7 @@ typedef char* Conclusion;
 */
 typedef struct regle {
 	Premisse premisse;
-	Conclusion conlusion;
+	Conclusion conclusion;
 } Regle;
 
 /*
@@ -50,23 +51,23 @@ Regle* createRule();
  * @param rule variable de type regle à tester
  * @return booléen sur la variable
  */
-Bool isEmpty(Regle rule);
+Bool isEmptyRule(Regle r);
 
-/*************************************
- * @brief fonction de création de proposition dans une règle
+/**********************************
+ * @brief fonction testant si la premisse d'une regle est vide ou non
  * 
- * @param proposition chaine de caractère acceuillant la proposition
- * @return proposition nouvellement créée
+ * @param rule variable de type regle à tester
+ * @return booléen sur la variable
  */
-Regle newProposition(char propostion);
+Bool isEmptyPremisse(Premisse p);
 
-/***************************************
- * @brief fonction de création de conclusion
+/**********************************
+ * @brief fonction testant si la conclusion d'une regle est vide ou non
  * 
- * @param conclusion chaine de caractère acceuillant la conclusion
- * @return conclusion nouvellement créée
+ * @param rule variable de type regle à tester
+ * @return booléen sur la variable
  */
-Regle newConclusion(char conclusion);
+Bool isEmptyConclusion(Regle r);
 
 /****************************************
  * @brief fonction comptant le nombre de proposition d'une règle
@@ -77,29 +78,13 @@ Regle newConclusion(char conclusion);
 int lengthRule(Regle r);
 
 /****************************************
- * @brief fonction d'accès à la prémisse d'une règle
- * 
- * @param r variable de type regle contenant la prémisse
- * @return le contenu de la prémisse de la regle
- */
-char getPremisse(Regle r);
-
-/****************************************
- * @brief fonction d'accès à la conclusion d'une règle
- * 
- * @param r variable de type regle contenant la conclusion
- * @return le contenu de la conclusion de la regle
- */
-char getConclusion(Regle r);
-
-/****************************************
  * @brief fonction d'ajout d'une proposition à une prémisse
  * 
  * @param r variable de type regle contenant la prémisse
  * @param proposition chaine de caractère contenant la proposition à ajouter
  * @return pas de return car void
  */
-void addProposition(Regle r, char proposition);
+Regle addProposition(Regle r, char* content);
 
 /****************************************
  * @brief fonction d'ajout d'une proposition à une prémisse
@@ -108,7 +93,7 @@ void addProposition(Regle r, char proposition);
  * @param conclusion chaine de caractère contenant la conclusion à ajouter
  * @return pas de return car void
  */
-void createConclusion(Regle r, char conclusion);
+Regle createConclusion(Regle r, char* content);
 
 /****************************************
  * @brief fonction indiquant si une chaine de caractère est une proposition de la prémisse d'une règle
@@ -117,7 +102,7 @@ void createConclusion(Regle r, char conclusion);
  * @param proposition chaine de caractère contenant la porposition à comparer à la prémisse
  * @return booléen sur la comparaison
  */
-Bool isProposition(Regle r, char proposition);
+Bool isProposition(Premisse p, char* content);
 
 /****************************************
  * @brief fonction de suppression de proposition dans une prémisse
@@ -126,15 +111,7 @@ Bool isProposition(Regle r, char proposition);
  * @param proposition chaine de caractère contenant la porposition à supprimer de la prémisse
  * @return pas de return car void
  */
-void deleteProposition(Regle r, char proposition);
-
-/****************************************
- * @brief fonction indiquant si la prémisse est vide ou pas
- * 
- * @param r variable de type regle contenant la prémisse
- * @return booléen sur la prémisse
- */
-Bool isEmptyPremisse(Regle r);
+Premisse deleteProposition(Regle r, char* proposition);
 
 /****************************************
  * @brief fonction indiquant la valeur de la tête de la prémisse d'une règle
@@ -152,6 +129,21 @@ char headValuePremisse(Regle r);
  */
 char valueConclusion(Regle r);
 
+/****************************************
+ * @brief fonction retournant le contenu d'une prémisse
+ * 
+ * @param r variable de type regle contenant la prémisse
+ * @return string du contenu
+ */
+char* proposition(Regle r);
+
+/****************************************
+ * @brief fonction retournant le contenu d'une conclusion
+ * 
+ * @param r variable de type regle contenant la conclusion
+ * @return string du contenu
+ */
+char* conclusion(Regle r);
 
 
 #endif

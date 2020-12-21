@@ -2,8 +2,22 @@
 
 /*------------------------------------*/
 
-Bool isEmpty(Regle rule){
-	if (rule == NULL) return true;
+Bool isEmptyRule(Regle r){
+	if (r.conclusion == NULL && r.premisse == NULL) return true;
+	return false;
+}
+
+/*------------------------------------*/
+
+Bool isEmptyPremisse(Premisse p){
+	if (p == NULL) return true;
+	return false;
+}
+
+/*------------------------------------*/
+
+Bool isEmptyConclusion(Regle r){
+	if (r.conclusion == NULL) return true;
 	return false;
 }
 
@@ -14,136 +28,100 @@ Regle* createRule(){
 	return new;
 }
 
-Regle newProposition(char proposition){
-	return newProposition <- new(proposition); // A REECRIRE
-}
-
-Regle newConclusion(char conclusion){
-	return newConclusion <- new(conclusion); // A REECRIRE
-}
-
 /*------------------------------------*/
 
-int lengthRule(Regle r){
-	int size = 0;
-	Regle l = r;
-
-	if (!isEmpty(l)) {
-		while (l != NULL) {
-			++size;
-			l = l->next;
-		}
-	}
-
-	return size;
-	
-}
-
-/*------------------------------------*/
-
-char getPremisse(Regle r){
-	if (isEmpty(r)) return NULL;
-	return premisse(r); // A REECRIRE
-}
-
-char getConclusion(Regle r){
-	Regle l = r;
-
-	if(isEmpty(l)) {
+char* proposition(Regle r){
+	if(isEmptyRule(r)){
 		return NULL;
 	}
-	else {
-		while(l != NULL){
-			l = l->next;
-		}
-		return l; // A REECRIRE
+	else if(isEmptyPremisse(r.premisse)){
+		return NULL;
+	}
+	else{
+		return r.premisse->content;
 	}
 }
 
 /*------------------------------------*/
 
-void addProposition(Regle r, char proposition){
-	Regle l = r;
-
-	if (isEmpty(l)) {
-		l->next = NULL;
-		proposition = getPremisse(l);
-		newProposition(proposition);
+char* conclusion(Regle r){
+	if(isEmptyRule(r)){
+		return NULL;
 	}
-	else {
-		while(l != NULL){
-			l = l->next;
-		}
-		newProposition(proposition);
-		l = getConclusion(l);
+	else if(isEmptyConclusion(r)){
+		return NULL;
+	}
+	else{
+		return r.conclusion;
 	}
 }
 
 /*------------------------------------*/
 
-void createConclusion(Regle r, char conclusion){
-	Regle l = r;
-	if(isEmpty(l)) {
-		conclusion = NULL;
+Regle addProposition(Regle r, char* content){
+	if(isEmptyRule(r)){
+		r.premisse = (Premisse)malloc(sizeof(Proposition));
+		r.premisse->content = malloc(strlen(content));
+		strcpy(r.premisse->content, content);
+		r.premisse->next = NULL;
+	}
+	else if(isProposition(r.premisse, content) == false){
+		Premisse tampon = r.premisse;
+		while(isEmptyPremisse(tampon->next)){
+			tampon = tampon->next;
+		}
+		Premisse new = (Premisse)malloc(sizeof(Proposition));
+		new->content = malloc(sizeof(strlen(content)));
+		strcpy(new->content, content);
+		tampon->next = new;
 	}
 	else {
-		while(isEmpty(l->next) == false){
-			l = l->next;
-		}
-		newConclusion(conclusion);
-		l->next = conclusion;
+		printf("Vous avez déjà mis cette proposition dans cette prémisse");
 	}
+	return r;
 }
 
 /*------------------------------------*/
 
-Bool isProposition(Regle r, char proposition){
-	if(isEmpty(r)) {
+Regle createConclusion(Regle r, char* content){
+	if(isEmptyPremisse(r)) {
+		printf("La prémisse de cette règle est vide, impossible de faire un conclusion");
+	}
+	else {
+		r.conclusion = (char *)malloc(sizeof(strlen(content)));
+		strcpy(r.conclusion, content);
+	}
+	return r;
+}
+
+/*------------------------------------*/
+
+Bool isProposition(Premisse p, char* content){
+	if(isEmptyPremisse(p)){
 		return false;
 	}
-	else if(head_element(r) == proposition) {
-		return true;
+	else{
+		if(strcmp(p->content, content) == 0){
+			return true;
+		}
+		else{
+			return isProposition(p->next, content);
+		}
 	}
-	return isProposition(tail_element(r), proposition);
 }
 
 /*------------------------------------*/
 
-void deleteProposition(Regle r, char proposition){
+Premisse deleteProposition(Regle r, char* proposition){
 	int c = 0;
 	Regle l = r;
 	Regle j = r; 
 	if(isEmpty(l)){
-		return l;
+		return NULL;
 	}
 	else
 	{
-		while(isEmpty(l) == false && l != proposition){
-			l = l->next;
-			++c;
-		}
-		while(isEmpty(j) == false){
-			for(int i = c; i<lengthRule(j); i++){
-				j = j->next;
-			}
-		}
-	}
-	return j;
-	
-}
-
-/*------------------------------------*/
-
-Bool isEmptyPremisse(Regle r){
-	if(isEmpty(r)){
-		return true;
-	}
-	else if(isEmpty(r->next)){
-		return true;
-	}
-	else {
-		return false;
-	}
+			//a refaire
 }
 
 /*------------------------------------*/

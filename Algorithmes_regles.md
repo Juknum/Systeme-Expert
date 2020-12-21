@@ -11,22 +11,6 @@ Fin
 ```
 
 ```pseudocode
-nouvelleProposition(String proposition) : Regle
-Debut
-	nouvelleProposition <- new(proposition)
-	retourner nouvelleProposition
-Fin
-```
-
-```pseudocode
-nouvelleConclusion(String conclusion) : Regle
-Debut
-	nouvelleConclusion <- new(conclusion)
-	retourner nouvelleConclusion
-Fin
-```
-
-```pseudocode
 est_vide(Regle r) : Booléen
 Debut
 	si r est NULL
@@ -53,12 +37,12 @@ Fin
 ```
 
 ```pseudocode
-premisse(Regle r) : string
+proposition(Regle r) : string
 Debut
 	si est_vide(r) est VRAI alors
 		reourner NULL
 	sinon
-		retourner premisse(r)
+		proposition(r)
 Fin
 ```
 
@@ -69,11 +53,10 @@ Regle l = r
 	si est_vide(r) est VRAI alors
 		retourner NULL
 	sinon
-		tant que est_vide(l) est FAUX faire
-			l <- reste(l)
+		tant que est_vide(suiv((l)) est FAUX faire
+			l <- suiv(l)
 		fin tant que
-		conclusion(l) <- l
-		retourner conclusion(l)
+		retourner proposition(l)
 Fin
 ```
 
@@ -83,7 +66,7 @@ Debut
 Regle l = r
 	si est_vide(l) est VRAI alors
 		nouvelleProposition(proposition)
-		premisse(l) <- proposition
+		l <- proposition
 		suiv(l) <- NULL
 	sinon
 		tant que est_vide(l) est FAUX faire
@@ -92,7 +75,7 @@ Regle l = r
 		nouvelleProposition(proposition)
 		conclusion(l) <- l
 		l <- proposition
-		suiv(l) <- conclusion 
+		suiv(l) <- conclusion(l)
 	fin sinon
 	retourner l
 Fin
