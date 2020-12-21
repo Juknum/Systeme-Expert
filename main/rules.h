@@ -13,20 +13,24 @@ typedef enum {
 } Bool;
 
 /*
- * Définition d'une Liste:
+ * Définition d'une Proposition :
 */
-typedef struct ListElement {
-	int value;
-	struct ListElement *next;
-} ListElement, *List;
+typedef struct proposition {
+	char* contenu;
+	struct proposition *next;
+} Proposition;
+
+typedef Proposition* Premisse;
+
+typedef char* Conclusion;
 
 /*
  * Définition d'une Règle:
 */
-typedef struct Element {
-	int value;
-	struct Element *next;
-} Element, *Regle;
+typedef struct regle {
+	Premisse premisse;
+	Conclusion conlusion;
+} Regle;
 
 /*
  * Prototypes:
