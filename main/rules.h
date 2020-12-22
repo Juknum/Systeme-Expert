@@ -111,7 +111,7 @@ Bool isProposition(Premisse p, char* content);
  * @param proposition chaine de caractère contenant la porposition à supprimer de la prémisse
  * @return pas de return car void
  */
-Premisse deleteProposition(Regle r, char* proposition);
+Premisse deleteProposition(Premisse p, char* proposition);
 
 /****************************************
  * @brief fonction indiquant la valeur de la tête de la prémisse d'une règle
@@ -119,15 +119,7 @@ Premisse deleteProposition(Regle r, char* proposition);
  * @param r variable de type regle contenant la prémisse
  * @return chaine de caractère de la tête de la prémisse
  */
-char headValuePremisse(Regle r);
-
-/****************************************
- * @brief fonction indiquant la valeur de la conclusion d'une règle
- * 
- * @param r variable de type regle contenant la conclusion
- * @return chaine de caractère de la conclusion
- */
-char valueConclusion(Regle r);
+char headValuePremisse(Premisse p);
 
 /****************************************
  * @brief fonction retournant le contenu d'une prémisse
@@ -143,7 +135,7 @@ char* proposition(Regle r);
  * @param r variable de type regle contenant la conclusion
  * @return string du contenu
  */
-char* conclusion(Regle r);
+char* valueConclusion(Regle r);
 
 
 #endif

@@ -44,20 +44,6 @@ char* proposition(Regle r){
 
 /*------------------------------------*/
 
-char* conclusion(Regle r){
-	if(isEmptyRule(r)){
-		return NULL;
-	}
-	else if(isEmptyConclusion(r)){
-		return NULL;
-	}
-	else{
-		return r.conclusion;
-	}
-}
-
-/*------------------------------------*/
-
 Regle addProposition(Regle r, char* content){
 	if(isEmptyRule(r)){
 		r.premisse = (Premisse)malloc(sizeof(Proposition));
@@ -112,43 +98,57 @@ Bool isProposition(Premisse p, char* content){
 
 /*------------------------------------*/
 
-Premisse deleteProposition(Regle r, char* proposition){
-	int c = 0;
-	Regle l = r;
-	Regle j = r; 
-	if(isEmpty(l)){
+Premisse deleteProposition(Premisse p, char* proposition){
+	if(isEmptyPremisse(p)){
 		return NULL;
 	}
-	else
-	{
-			//a refaire
+	else if(strcmp(p->content, proposition) == 0 && isEmptyPremisse(p->next) == true){
+			return NULL;
+	}
+	else if(strcmp(p->content, proposition) == 0 && isEmptyPremisse(p->next) = false){
+		Premisse tampon = p->next;
+		free(p->content);
+		free(p);
+		p =tampon;
+		return p;
+	}
+	else if(isEmptyPremisse(p->next)){
+		return p;
+	}
+	else if(strcmp(p->next->content, proposition)){
+		Premisse tampon = p->next->next;
+		free(p->next->content);
+		free(p->next);
+		p->next = tampon;
+		return p;
+	}else{
+		return deleteProposition(p->next, proposition);
+	}
 }
 
 /*------------------------------------*/
 
-char headValuePremisse(Regle r){
-	if(isEmpty(r)){
-		return NULL;
-	}
-	else if(isEmpty(r->next)){
+char headValuePremisse(Premisse p){
+	if(isEmptyPremisse(p)){
 		return NULL;
 	}
 	else {
-		return head_element(r);
+		return p->content;
 	}
 }
 
 /*------------------------------------*/
 
-char valueConclusion(Regle r){
-Regle l = r;
-	if(isEmpty(l)){
+char* valueConclusion(Regle r){
+	if(isEmptyRule(r)){
+		return NULL;
+	}
+	else if(isEmptyConclusion(r)){
 		return NULL;
 	}
 	else{
-		while(isEmpty(l->next) == false){
-			l = l->next;
-		}
-		return l;
+		return r.conclusion;
 	}
 }
+
+/*------------------------------------*/
