@@ -2,6 +2,7 @@
 Règle : liste dont le dernier élément est la conclusion de ladite règle.
 
 ## Algorithmes:
+
 ```pseudocode
 créerRegle(Regle nouvelleRegle) : Règle
 Debut
@@ -11,7 +12,7 @@ Fin
 ```
 
 ```pseudocode
-est_vide(Regle r) : Booléen
+est_vide_regle(Regle r) : Booléen
 Debut
 	si r est NULL
 		retourner VRAI
@@ -21,42 +22,39 @@ Fin
 ```
 
 ```pseudocode
-comptage_val(Regle r) : integer
+est_vide_premisse(Premisse p) : Booléen
 Debut
-	c = 0
-	Regle l = r
-	si r est NULL
-		retourner 0
-	sinon
-		tant que est_vide(l) est FAUX faire
-			c = c + 1
-			l <- reste(l)
-		fin tant que
-	retourner c
+	si p = NULL alors
+		retourner VRAI
+	sinon 
+		retourner FAUX
+	fin si
+Fin 
+```
+
+```pseudocode
+est_vide_conclusion(Regle r) : Booléen
+Debut
+	si est_vide(conclusion(r)) est VRAI alors
+		retourner VRAI
+	sinon 
+		retourner FAUX
+	fin si
 Fin 
 ```
 
 ```pseudocode
 proposition(Regle r) : string
 Debut
-	si est_vide(r) est VRAI alors
+	si est_vide_regle(r) est VRAI alors
 		reourner NULL
-	sinon
-		proposition(r)
-Fin
-```
-
-```pseudocode
-conclusion(Regle r) : string
-Debut
-Regle l = r
-	si est_vide(r) est VRAI alors
-		retourner NULL
-	sinon
-		tant que est_vide(suiv((l)) est FAUX faire
-			l <- suiv(l)
-		fin tant que
-		retourner proposition(l)
+	sinon 
+		si est_vide_premisse(premisse(r)) est VRAI alors
+			retourner NULL
+		sinon
+			retourner contenu(premisse(r))
+		fin si
+	fin si
 Fin
 ```
 
@@ -69,30 +67,27 @@ Regle l = r
 		l <- proposition
 		suiv(l) <- NULL
 	sinon
-		tant que est_vide(l) est FAUX faire
-			l <- suiv(l)
-		fin tant que
-		nouvelleProposition(proposition)
-		conclusion(l) <- l
-		l <- proposition
-		suiv(l) <- conclusion(l)
-	fin sinon
+		si est_proposition(premisse(r), proposition) est FAUX alors
+			tant que est_vide(l) est FAUX faire
+				l <- suiv(l)
+			fin tant que
+			nouvelleProposition(proposition)
+			contenu(nouvProposition) <- proposition
+			suiv(nouvProposition) = null
+			suiv(l) <- nouvProposition
+	fin si
 	retourner l
 Fin
 ```
 
 ```pseudocode
-creer_conclusion(Regle r, string conclusion) : Regle
+creer_conclusion(Regle r, string proposition) : Regle
 Debut
 Regle l = r
 	si est_vide(l) est VRAI alors
 		conclusion est NULL
 	sinon
-		tant que est_vide(suiv(l)) est FAUX faire
-			l <- suiv(l)
-		fin tant que
-		nouvelleConclusion(conclusion)
-		suiv(l) <- conclusion
+		conclusion(l) <- proposition
 Fin
 ```
 
@@ -106,62 +101,41 @@ Debut
 	si element_tete(r) = proposition
 		retourner VRAI
 	fin si
-	retourner est_proposition(element_queue(r), proposition)
+	retourner est_proposition(suiv(r), proposition)
 fin 
 ```
 
 ```pseudocode
-retirer_proposition(Regle r, string proposition) : Regle
+retirer_proposition(Premisse p, string proposition) : Regle
 Debut
-c = 0
-Regle l =r
-	si est_vide(l) est VRAI alors
-		retourner l 
+	si est_vide_premisse(p) est VRAI alors
+		retourner NULL
+	sinon si contenu(p) = proposition ET est_vide_premisse(suiv(p)) est VRAI alors
+		retourner NULL
+	sinon si contenu(p) = proposition ET est_vide_premisse(suiv(p)) est FAUX alors
+		Premisse tampon = suiv(p)
+		liberer(p)
+		p = tampon
+		retouner p
+	sinon si est_vide_premisse(suiv(p)) est VRAI alors
+		retourner p
+	sinon si contenu(suiv(p)) proposition alors
+		Premisse taampon = suiv(suiv(p))
+		liberer(suiv(p))
+		suiv(p) = tampon
+		return p
 	sinon
-		si est_proposition(l) est FAUX alors
-			retourner l 
-		sinon
-			tant que est_vide(suiv(l)) est FAUX et l != proposition faire
-				l <- suiv(l)
-				c = c + 1
-			fin tant que
-			tant que est_vide(l) est FAUX faire 
-				pour i allant de c a comptage_val(l) faire
-					l = suiv(l)
-				fin pour
-			fin tant que
-		fin si 
-	fin si 
-	retourner l 
+		retouner retirer_proposition(suiv(p), proposition)
 Fin 
 ```
 
 ```pseudocode
-est_vide_premisse(Regle r) : Booléen
+acces_tete_premisse(Premisse p) : string
 Debut
-	si est_vide(r) est VRAI alors
-		retourner VRAI
-	sinon 
-		si est_vide(suiv(r)) est VRAI alors
-			retourner VRAI
-		sinon
-		retourner FAUX
-		fin si
-	fin si
-Fin 
-```
-
-```pseudocode
-acces_tete_premisse(Regle r) : string
-Debut
-	si est_vide(r) est VRAI alors
+	si est_vide(p) est VRAI alors
 		retourner NULL
 	sinon
-		si est_vide(suiv(r)) est VRAI alors
-			retourner NULL
-		sinon
-			retourner r
-		fin si
+		retourner contenu(p)
 	fin si
 fin
 ```
@@ -171,11 +145,10 @@ acces_conclusion(Regle r) : string
 Debut
 	si est_vide(r) est VRAI alors
 		retourner NULL
+	sinon si est_vide_conlcusion(r) est VRAI alors
+		retourner NULL
 	sinon
-		tant que est_vide(suiv(r)) est FAUX faire
-			r <- suiv(r)
-		fin tant que
-		retourner r
+		retourner conclusion(r)
 	fin si
 fin 
 ```
