@@ -1,3 +1,6 @@
+#ifndef __KNOWLEDGE__BASIS__H__
+#define __KNOWLEDGE__BASIS__H__
+
 #include "rules.h"
 
 typedef struct BC{
@@ -34,3 +37,5 @@ BC addRuleBasis(BC knowledge_basis, Regle r);
  * @return la regle qui est valeur de tête
  */
 Regle headValueBasis(BC knowledge_basis);
+
+#endif
