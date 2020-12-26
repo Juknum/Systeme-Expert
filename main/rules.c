@@ -23,8 +23,10 @@ Bool isEmptyConclusion(Regle r){
 
 /*------------------------------------*/
 
-Regle* createRule(){
-	Regle* new = (Regle*)malloc(sizeof(Regle));
+Regle createRule(){
+	Regle new;
+		new.premisse = NULL;
+		new.conclusion = NULL;
 	return new;
 }
 

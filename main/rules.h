@@ -43,7 +43,7 @@ typedef struct regle {
  * @param new_rule variable acceuillant la nouvelle regle
  * @return regle nouvellement créée
  */
-Regle* createRule();
+Regle createRule();
 
 /**********************************
  * @brief fonction testant si la regle est vide ou non

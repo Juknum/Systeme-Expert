@@ -23,9 +23,9 @@ BC createBasis();
  * 
  * @param knowledge_basis variable de type BC acceuillant la base de connaissance
  * @param r variable de type règle à intégrer à BC
- * @return pas de return
+ * @return base connaissance actualisée 
  */
-void addRuleBasis(BC knowledge_basis, Regle r);
+BC addRuleBasis(BC knowledge_basis, Regle r);
 
 /********************************
  * @brief fonction d'accès à la valeur de tète de la base de connaissance

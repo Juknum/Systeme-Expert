@@ -9,7 +9,7 @@ BC createBasis(){
 
 /*------------------------------------*/
 
- void addRuleBasis(BC knowledge_basis, Regle r){
+ BC addRuleBasis(BC knowledge_basis, Regle r){
      if (knowledge_basis == NULL){
          knowledge_basis->head = r;
          knowledge_basis->next = NULL;
