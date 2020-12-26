@@ -102,15 +102,17 @@ Premisse deleteProposition(Premisse p, char* proposition){
 	if(isEmptyPremisse(p)){
 		return NULL;
 	}
-	else if(strcmp(p->content, proposition) == 0 && isEmptyPremisse(p->next) == true){
+	else if(strcmp(p->content, proposition)){
+		if(isEmptyPremisse(p->next) == true){
 			return NULL;
-	}
-	else if(strcmp(p->content, proposition) == 0 && isEmptyPremisse(p->next) = false){
-		Premisse tampon = p->next;
-		free(p->content);
-		free(p);
-		p =tampon;
-		return p;
+		}
+		else{
+			Premisse tampon = p->next;
+			free(p->content);
+			free(p);
+			p =tampon;
+			return p;
+		}
 	}
 	else if(isEmptyPremisse(p->next)){
 		return p;
