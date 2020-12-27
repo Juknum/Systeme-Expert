@@ -32,20 +32,6 @@ Regle createRule(){
 
 /*------------------------------------*/
 
-char* proposition(Regle r){
-	if(isEmptyRule(r)){
-		return NULL;
-	}
-	else if(isEmptyPremisse(r.premisse)){
-		return NULL;
-	}
-	else{
-		return r.premisse->content;
-	}
-}
-
-/*------------------------------------*/
-
 Regle addProposition(Regle r, char* content){
 	if(isEmptyRule(r)){
 		r.premisse = (Premisse)malloc(sizeof(Proposition));

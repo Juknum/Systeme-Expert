@@ -70,14 +70,6 @@ Bool isEmptyPremisse(Premisse p);
 Bool isEmptyConclusion(Regle r);
 
 /****************************************
- * @brief fonction comptant le nombre de proposition d'une règle
- * 
- * @param r variable de type regle qui contient les propositions
- * @return entier indiquant le nombre de proposition
- */
-int lengthRule(Regle r);
-
-/****************************************
  * @brief fonction d'ajout d'une proposition à une prémisse
  * 
  * @param r variable de type regle contenant la prémisse
@@ -120,14 +112,6 @@ Premisse deleteProposition(Premisse p, char* proposition);
  * @return chaine de caractère de la tête de la prémisse
  */
 char headValuePremisse(Premisse p);
-
-/****************************************
- * @brief fonction retournant le contenu d'une prémisse
- * 
- * @param r variable de type regle contenant la prémisse
- * @return string du contenu
- */
-char* proposition(Regle r);
 
 /****************************************
  * @brief fonction retournant le contenu d'une conclusion
