@@ -71,7 +71,7 @@ Fin
 creer_conclusion(Regle r, string proposition) : Regle
 Debut
 Regle l = r
-	si est_vide_conclusion(l) est VRAI alors
+	si est_vide(l) est VRAI alors
 		conclusion est NULL
 	sinon
 		conclusion(l) <- proposition
