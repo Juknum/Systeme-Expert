@@ -79,16 +79,17 @@ Fin
 ```
 
 ```pseudocode
-est_proposition(Regle r, string proposition) : Booléen
+est_proposition(Premisse p, string proposition) : Booléen
 	*/ Algorithme récursif */
 Debut
-	si est_vide(r) est VRAI alors
+	si est_vide_premisse(p) est VRAI alors
 		retourner FAUX
 	sinon
-	si element_tete(r) = proposition
-		retourner VRAI
+		si contenu(p) = proposition
+			retourner VRAI
+		fin si
 	fin si
-	retourner est_proposition(suiv(r), proposition)
+	retourner est_proposition(suiv(p), proposition)
 fin 
 ```
 
