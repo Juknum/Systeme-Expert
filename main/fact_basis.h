@@ -43,7 +43,7 @@ void DisplayFactBasis(BF fact_basis);
  * @param content string contenant le fait à ajouter
  * @return Base de fait actualisée
  */
-addFactFactBasis(BF fact_basis, char* content);
+BF addFactFactBasis(BF fact_basis, char* content);
 
 
 /*****************************
