@@ -45,21 +45,6 @@ Fin
 ```
 
 ```pseudocode
-proposition(Regle r) : string
-Debut
-	si est_vide_regle(r) est VRAI alors
-		reourner NULL
-	sinon 
-		si est_vide_premisse(premisse(r)) est VRAI alors
-			retourner NULL
-		sinon
-			retourner contenu(premisse(r))
-		fin si
-	fin si
-Fin
-```
-
-```pseudocode
 ajouter_proposition(Regle r, string proposition) : Regle
 Debut
 Regle l = r
