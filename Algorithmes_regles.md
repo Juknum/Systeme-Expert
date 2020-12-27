@@ -47,18 +47,18 @@ Fin
 ```pseudocode
 ajouter_proposition(Regle r, string proposition) : Regle
 Debut
-Regle l = r
-	si est_vide(l) est VRAI alors
+	si est_vide_regle(r) est VRAI alors
 		nouvelleProposition(proposition)
-		l <- proposition
-		suiv(l) <- NULL
+		premisse(r) <- proposition
+		suiv(premisse(r)) <- NULL
 	sinon si est_proposition(premisse(r), proposition) est FAUX alors
-			tant que est_vide(l) est FAUX faire
+		Regle l = r
+			tant que est_vide_premisse(suiv(l)) est FAUX faire
 				l <- suiv(l)
 			fin tant que
 			nouvelleProposition(proposition)
 			contenu(nouvProposition) <- proposition
-			suiv(nouvProposition) = null
+			suiv(nouvProposition) = NULL
 			suiv(l) <- nouvProposition
 	sinon
 		retourner ERREUR
