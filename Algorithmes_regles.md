@@ -36,7 +36,7 @@ Fin
 ```pseudocode
 est_vide_conclusion(Regle r) : Booléen
 Debut
-	si est_vide(conclusion(r)) est VRAI alors
+	si conclusion(r) est NULL alors
 		retourner VRAI
 	sinon 
 		retourner FAUX
