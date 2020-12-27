@@ -18,13 +18,14 @@ Debut
 		retourner VRAI
 	sinon
 		retourner FAUX
+	fin si
 Fin
 ```
 
 ```pseudocode
 est_vide_premisse(Premisse p) : Booléen
 Debut
-	si p = NULL alors
+	si p est NULL alors
 		retourner VRAI
 	sinon 
 		retourner FAUX
@@ -66,8 +67,7 @@ Regle l = r
 		nouvelleProposition(proposition)
 		l <- proposition
 		suiv(l) <- NULL
-	sinon
-		si est_proposition(premisse(r), proposition) est FAUX alors
+	sinon si est_proposition(premisse(r), proposition) est FAUX alors
 			tant que est_vide(l) est FAUX faire
 				l <- suiv(l)
 			fin tant que
@@ -75,6 +75,8 @@ Regle l = r
 			contenu(nouvProposition) <- proposition
 			suiv(nouvProposition) = null
 			suiv(l) <- nouvProposition
+	sinon
+		retourner ERREUR
 	fin si
 	retourner l
 Fin
@@ -110,16 +112,17 @@ retirer_proposition(Premisse p, string proposition) : Regle
 Debut
 	si est_vide_premisse(p) est VRAI alors
 		retourner NULL
-	sinon si contenu(p) = proposition ET est_vide_premisse(suiv(p)) est VRAI alors
-		retourner NULL
-	sinon si contenu(p) = proposition ET est_vide_premisse(suiv(p)) est FAUX alors
-		Premisse tampon = suiv(p)
-		liberer(p)
-		p = tampon
-		retouner p
+	sinon si contenu(p) = proposition alors
+		si est_vide_premisse(suiv(p)) est VRAI alors
+			retourner NULL
+		sinon
+			Premisse tampon = suiv(p)
+			liberer(p)
+			p = tampon
+			retouner p
 	sinon si est_vide_premisse(suiv(p)) est VRAI alors
 		retourner p
-	sinon si contenu(suiv(p)) proposition alors
+	sinon si contenu(suiv(p)) = proposition alors
 		Premisse taampon = suiv(suiv(p))
 		liberer(suiv(p))
 		suiv(p) = tampon
