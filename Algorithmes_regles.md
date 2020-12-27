@@ -87,9 +87,10 @@ Debut
 	sinon
 		si contenu(p) = proposition
 			retourner VRAI
+		sinon
+			retourner est_proposition(suiv(p), proposition)
 		fin si
 	fin si
-	retourner est_proposition(suiv(p), proposition)
 fin 
 ```
 
