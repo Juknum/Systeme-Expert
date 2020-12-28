@@ -22,6 +22,14 @@ typedef ElemBC* BC;
 BC createBasis();
 
 /********************************
+ * @brief fonction de test si base de connaissance vide
+ * 
+ * @param knowledge_basis base de connaissance à tester
+ * @return booléen sur la base de connaissance
+ */
+Bool isEmptyKnowledgeBasis(BC knowledge_basis);
+
+/********************************
  * @brief fonction d'ajout de règle à une base
  * 
  * @param knowledge_basis variable de type BC acceuillant la base de connaissance

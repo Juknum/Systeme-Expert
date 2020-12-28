@@ -56,7 +56,7 @@ Bool isEmptyRule(Regle r);
 /**********************************
  * @brief fonction testant si la premisse d'une regle est vide ou non
  * 
- * @param rule variable de type regle à tester
+ * @param p variable de type prémisse à tester
  * @return booléen sur la variable
  */
 Bool isEmptyPremisse(Premisse p);
@@ -90,7 +90,7 @@ Regle createConclusion(Regle r, char* content);
 /****************************************
  * @brief fonction indiquant si une chaine de caractère est une proposition de la prémisse d'une règle
  * 
- * @param r variable de type regle contenant la prémisse
+ * @param p variable de type premisse contenant la proposition
  * @param proposition chaine de caractère contenant la porposition à comparer à la prémisse
  * @return booléen sur la comparaison
  */
@@ -99,9 +99,9 @@ Bool isProposition(Premisse p, char* content);
 /****************************************
  * @brief fonction de suppression de proposition dans une prémisse
  * 
- * @param r variable de type regle contenant la prémisse
+ * @param p variable de type prémisse contenant la proposition
  * @param proposition chaine de caractère contenant la porposition à supprimer de la prémisse
- * @return pas de return car void
+ * @return prémisse de la regle mise à jour
  */
 Premisse deleteProposition(Premisse p, char* proposition);
 
@@ -111,7 +111,7 @@ Premisse deleteProposition(Premisse p, char* proposition);
  * @param r variable de type regle contenant la prémisse
  * @return chaine de caractère de la tête de la prémisse
  */
-char headValuePremisse(Premisse p);
+char headValuePremisse(Regle r);
 
 /****************************************
  * @brief fonction retournant le contenu d'une conclusion
@@ -120,6 +120,14 @@ char headValuePremisse(Premisse p);
  * @return string du contenu
  */
 char* valueConclusion(Regle r);
+
+/****************************************
+ * @brief fonction une regle
+ * 
+ * @param r variable de type regle à afficher
+ * @return pas de return
+ */
+void displayRule(Regle r);
 
 
 #endif

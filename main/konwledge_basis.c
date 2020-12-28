@@ -30,3 +30,24 @@ BC createBasis(){
 	return knowledge_basis->head;
  }
  
+ /*------------------------------------*/
+
+ Bool isEmptyKnowledgeBasis(BC knowledge_basis){
+	 if(knowledge_basis == NULL)return true;
+	 return false;
+ }
+
+ void displayKnowledgeBasis(BC knowledge_basis){
+	if(isEmptyKnowledgeBasis(knowledge_basis)){
+		printf("***Base de connaissance vide***");
+	}
+	else{
+		BC buffer = knowledge_basis;
+		printf("***Voici la base de connaissance***");
+		while(buffer != NULL){
+			displayRule(headValueBasis(buffer));
+			buffer = buffer->next;
+		printf("***Fin de la base de connaissance***");
+		}
+	}
+}

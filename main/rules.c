@@ -1,5 +1,7 @@
 #include "rules.h"
 
+#define NULL ((void *)0)
+
 /*------------------------------------*/
 
 Bool isEmptyRule(Regle r){
@@ -40,14 +42,14 @@ Regle addProposition(Regle r, char* content){
 		r.premisse->next = NULL;
 	}
 	else if(isProposition(r.premisse, content) == false){
-		Premisse tampon = r.premisse;
-		while(isEmptyPremisse(tampon->next)){
-			tampon = tampon->next;
+		Regle buffer = r;
+		while(isEmptyPremisse(buffer.premisse->next)){
+			buffer.premisse = buffer.premisse->next;
 		}
 		Premisse new = (Premisse)malloc(sizeof(Proposition));
 		new->content = malloc(sizeof(strlen(content)));
 		strcpy(new->content, content);
-		tampon->next = new;
+		buffer.premisse->next = new;
 	}
 	else {
 		printf("Vous avez déjà mis cette proposition dans cette prémisse");
@@ -88,17 +90,19 @@ Bool isProposition(Premisse p, char* content){
 
 Premisse deleteProposition(Premisse p, char* proposition){
 	if(isEmptyPremisse(p)){
-		return NULL;
+		return p;
 	}
 	else if(strcmp(p->content, proposition)){
 		if(isEmptyPremisse(p->next) == true){
-			return NULL;
+			Premisse buffer = p;
+			buffer = NULL;
+			return buffer;
 		}
 		else{
-			Premisse tampon = p->next;
+			Premisse buffer = p->next;
 			free(p->content);
 			free(p);
-			p =tampon;
+			p = buffer;
 			return p;
 		}
 	}
@@ -106,10 +110,10 @@ Premisse deleteProposition(Premisse p, char* proposition){
 		return p;
 	}
 	else if(strcmp(p->next->content, proposition)){
-		Premisse tampon = p->next->next;
+		Premisse buffer = p->next->next;
 		free(p->next->content);
 		free(p->next);
-		p->next = tampon;
+		p->next = buffer;
 		return p;
 	}else{
 		return deleteProposition(p->next, proposition);
@@ -118,12 +122,12 @@ Premisse deleteProposition(Premisse p, char* proposition){
 
 /*------------------------------------*/
 
-char headValuePremisse(Premisse p){
-	if(isEmptyPremisse(p)){
+char headValuePremisse(Regle r){
+	if(isEmptyPremisse(r.premisse)){
 		return NULL;
 	}
 	else {
-		return p->content;
+		return r.premisse->content;
 	}
 }
 
@@ -142,3 +146,18 @@ char* valueConclusion(Regle r){
 }
 
 /*------------------------------------*/
+
+void displayRule(Regle r){
+	if(isEmptyRule(r)){
+		printf("\nLa règle est vide");
+	}
+	else{
+		printf("***Regle***");
+		Regle buffer = r;
+		while(buffer.premisse != NULL){
+			puts(buffer.premisse->content);
+			buffer.premisse = buffer.premisse->next;
+		}
+		puts(r.conclusion);
+	}
+}
