@@ -3,7 +3,9 @@ Base de connaissance : liste de règle.
 
 ## Algorithmes :
 ```pseudocode
-créerBaseVide(BC new_basis)
+Fonction créerBaseVide
+Données : pas de données
+Résultat : BC new_basis
 Debut 
     new_basis <- new(BC)
     retourner new_basis
@@ -11,12 +13,15 @@ Fin
 ```
 
 ```pseudocode
-ajouterRegleBase(BC knowledge_basis, Regle r)
+Fonction ajouterRegleBase
+Données : BC knowledge_basis
+         Regle r
+Résultat : BC knowledge_basis
 Debut
-    si knowledge_basis est NULL alors
+    si knowledge_basis est indéfini alors
         knowledge_basis = r
     sinon
-        tant que knowledge_basis != NULL
+        tant que knowledge_basis != indéfini
             knowledge_basis <- suiv(knowledge_basis)
         fin tant que
         suiv(knowledge_basis) = r
@@ -25,7 +30,9 @@ Fin
 ```
 
 ```pseudocode
-headValueBasis(BC konwledge_basis)
+Fonction headValueBasis
+Données : BC konwledge_basis
+Résultat : variable de type Regle 
 Debut
     return valeur_tete(knowledge_basis)
 Fin
