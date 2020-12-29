@@ -94,9 +94,7 @@ Premisse deleteProposition(Premisse p, char* proposition){
 	}
 	else if(strcmp(p->content, proposition)){
 		if(isEmptyPremisse(p->next) == true){
-			Premisse buffer = p;
-			buffer = NULL;
-			return buffer;
+			return NULL;
 		}
 		else{
 			Premisse buffer = p->next;

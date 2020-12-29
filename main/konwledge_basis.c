@@ -47,7 +47,7 @@ BC createBasis(){
 		while(buffer != NULL){
 			displayRule(headValueBasis(buffer));
 			buffer = buffer->next;
-		printf("***Fin de la base de connaissance***");
 		}
+		printf("***Fin de la base de connaissance***");
 	}
 }

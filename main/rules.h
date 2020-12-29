@@ -64,7 +64,7 @@ Bool isEmptyPremisse(Premisse p);
 /**********************************
  * @brief fonction testant si la conclusion d'une regle est vide ou non
  * 
- * @param rule variable de type regle à tester
+ * @param r variable de type regle à tester
  * @return booléen sur la variable
  */
 Bool isEmptyConclusion(Regle r);

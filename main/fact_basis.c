@@ -19,8 +19,8 @@ void DisplayFactBasis(BF fact_basis){
 		while(buffer != NULL){
 			printf("\n%s", buffer->content);
 			buffer = buffer->next;
-		printf("***Fin de la base de fait***");
 		}
+		printf("***Fin de la base de fait***");
 	}
 }
 
