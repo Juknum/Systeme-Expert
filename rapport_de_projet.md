@@ -4,8 +4,12 @@
 
 
 ## Table des matières :
-1. [Paragraphe 1](#NosChoixDeConceptions)
+1. [Nos choix de conception d'implémentation et la démarche adoptée](#Paragraphe1)
 2. [Algorithmes des sous-programmes](#Paragraphe2)
+    1. [Algorithmes des règles](#SousParagraphe1)
+    2. [Algorithmes de la base de connaissance](#SousParagraphe2)
+3. [Jeu d'essai](#Paragraphe3)
+4. [Commentaires](#Paragraphe4)
 
 
 ## Nos choix de conception d'implémentation et la démarche adoptée
@@ -14,7 +18,7 @@
 
 ## Algorithmes des sous-programmes
 
-### Liste des sous-programmes des règles
+   ### Liste des sous-programmes des règles
 
 **Créer une règle vide**
 ```pseudocode
@@ -27,6 +31,7 @@ Debut
 Fin
 ```
 > On alloue la mémoire nécessaire pour une variable de type règle que l’on retourne ensuite
+
 
 **Tester si la règle/prémisse/conclusion est vide**
 ```pseudocode
@@ -67,6 +72,7 @@ Fin
 ```
 > Les trois algorithmes fonctionnent de manière similaire : si la règle/conclusion/prémisse ne contient rien, retourner **VRAI**, sinon retourner **FAUX**
 
+
 **Ajout d'une proposition à la prémisse (ajout en queue)**
 ```pseudocode
 Fonction ajouter_proposition
@@ -95,6 +101,7 @@ Fin
 ```
 > On teste si la règle est vide. Si c’est le cas, la prémisse prend la valeur de la proposition. Sinon, on teste si la proposition est déjà dans la prémisse (au cas où). Si ce n’est pas le cas, on ajoute la proposition en queue de prémisse.
 
+
 **Créer la conclusion d'une règle**
 ```pseudocode
 Fonction creer_conclusion
@@ -110,6 +117,7 @@ Regle l = r
 Fin
 ```
 > On teste si la règle est vide. Si c’est le cas, on ne peut rien conclure. Sinon, la conclusion prend la valeur de la proposition.
+
 
 **Tester si une proposition appartient à une prémisse (récursivement)**
 ```pseudocode
@@ -130,6 +138,7 @@ Debut
 fin 
 ```
 > On teste si la prémisse est vide. Si c’est le cas alors on retourne FAUX. Sinon si la proposition de la prémisse est la même proposition que celle que l’on veut tester, alors on retourne VRAI. Si ce n’est pas le cas, on retourne la fonction pointant sur l’élément suivant de la prémisse.
+
 
 **Retirer une proposition d'une prémisse**
 ```pseudocode
@@ -162,6 +171,7 @@ Fin
 > On teste si la prémisse est vide. Si c'est le cas, on retourne la prémisse inchangé (on ne peut rien supprimer). Sinon, on étudie le cas où la proposition est en tête de prémisse. Si c'est le cas et que la prémisse ne contient pas d'autre élément, on retourne indéfini. Si elle en contient d'autres, on se sert d'une prémisse tampon pour supprimer l'élément de tête.
 > Dans le cas où la proposition n'est pas en tête de prémisse, on vérifie si la prémisse contient plus d'une proposition, si ce n'est pas le cas, on retourne p inchangée (on ne peut rien supprimer). Sinon, (à finir structure de l'algo discutable)
 
+
 **Accès à l'élément de tête d'une prémisse**
 ```pseudocode
 Fonction acces_tete_premisse
@@ -176,6 +186,7 @@ Debut
 fin
 ```
 > On teste si la prémisse de la règle est vide. Si c'est le cas, on retourne indéfini. Sinon, on retourne le contenu du premier élément de la prémisse de r.
+
 
 **Accès à la conclusion d'une règle**
 ```pseudocode
@@ -193,13 +204,15 @@ fin
 > On teste si la conclusion de la règle est vide. Si c'est le cas, on retourne indéfini. Sinon on retourne le contenu de la conclusion de r.
 
 
-    ### Liste des sous-programmes de la base de connaissance
+   ### Liste des sous-programmes de la base de connaissance
+
+**Créer une base vide**
 
 
-  ## Jeu d'essai
+## Jeu d'essai
 
 
 
-  ## Commentaires
+## Commentaires
 
 
