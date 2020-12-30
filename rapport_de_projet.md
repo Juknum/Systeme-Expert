@@ -3,8 +3,10 @@
 ###### Constant Julien, Echard Noé
 
 
-- Sommaire :
-  [ToC]
+## Table des matières :
+1. [Paragraphe 1](#NosChoixDeConceptions)
+2. [Algorithmes des sous-programmes](#Paragraphe2)
+
 
 ## Nos choix de conception d'implémentation et la démarche adoptée
 
