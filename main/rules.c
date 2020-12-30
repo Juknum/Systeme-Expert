@@ -132,10 +132,7 @@ char headValuePremisse(Regle r){
 /*------------------------------------*/
 
 char* valueConclusion(Regle r){
-	if(isEmptyRule(r)){
-		return NULL;
-	}
-	else if(isEmptyConclusion(r)){
+	 if(isEmptyConclusion(r)){
 		return NULL;
 	}
 	else{

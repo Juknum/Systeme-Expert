@@ -67,7 +67,7 @@ Debut
 			tant que est_vide_premisse(suiv(l)) est FAUX faire
 				l <- suiv(l)
 			fin tant que
-			nouvelleProposition(proposition)
+			nouvelleProposition(nouvProposition)
 			contenu(nouvProposition) <- proposition
 			suiv(nouvProposition) = indéfini
 			suiv(l) <- nouvProposition
@@ -156,9 +156,7 @@ Fonction acces_conclusion
 Données : Regle r
 Résultat : conclusion de la règle (string)
 Debut
-	si est_vide(r) est VRAI alors
-		retourner indéfini
-	sinon si est_vide_conlcusion(r) est VRAI alors
+	si est_vide_conlcusion(r) est VRAI alors
 		retourner indéfini
 	sinon
 		retourner conclusion(r)
