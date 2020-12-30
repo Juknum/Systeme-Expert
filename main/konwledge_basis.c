@@ -15,13 +15,15 @@ BC createBasis(){
 		knowledge_basis->next = NULL;
 	}
 	else {
-		while(knowledge_basis->next != NULL){
-			knowledge_basis = knowledge_basis->next;
+		BC buffer = knowledge_basis;
+		while(buffer->next != NULL){
+			buffer = buffer->next;
 		}
 		BC new = (BC)malloc(sizeof(ElemBC));
 		new->head = r;
-		knowledge_basis->next = new;
+		buffer->next = new;
 	}
+	return knowledge_basis;
  }
 
  /*------------------------------------*/

@@ -12,13 +12,13 @@
 4. [Commentaires](#Paragraphe4)
 
 
-## Nos choix de conception d'implémentation et la démarche adoptée
+## 1. Nos choix de conception d'implémentation et la démarche adoptée
 
 
 
-## Algorithmes des sous-programmes
+## 2. Algorithmes des sous-programmes
 
-   ### Liste des sous-programmes des règles
+   ### 1. Liste des sous-programmes des règles
 
 **Créer une règle vide**
 ```pseudocode
@@ -204,15 +204,58 @@ fin
 > On teste si la conclusion de la règle est vide. Si c'est le cas, on retourne indéfini. Sinon on retourne le contenu de la conclusion de r.
 
 
-   ### Liste des sous-programmes de la base de connaissance
+   ### 2. Liste des sous-programmes de la base de connaissance
 
 **Créer une base vide**
+```pseudocode
+Fonction créerBaseVide
+Données : pas de données
+Résultat : BC new_basis
+Debut 
+    new_basis <- new(BC)
+    retourner new_basis
+Fin
+```
+> On alloue de la mémoire pour une variable de type BC que l'on retourne ensuite
+
+**Ajouter une règle à la base de connaissance**
+```pseudocode
+Fonction ajouterRegleBase
+Données : BC knowledge_basis
+         Regle r
+Résultat : BC knowledge_basis
+Debut
+    si knowledge_basis est indéfini alors
+        knowledge_basis = r
+    sinon
+        BC tampon = knowledge_basis
+        tant que tampon != indéfini
+            tampon <- suiv(tampon)
+        fin tant que
+        créerBaseVide(tampon2)
+        element_tete(tampon2) = r
+        suiv(tampon) = tampon2
+    fin  si 
+Fin
+```
+> On teste si la base est vide. Si c'est le cas, on copie simplement la règle de la base de connaissance. Sinon, on parcourt la base à l'aide d'une base tampon, puis à l'aide d'un autre tampon on met la règle en queue de la première base tampon. 
+
+**Acceder à la valeur de tête de la base de connaissance**
+```pseudocode
+Fonction headValueBasis
+Données : BC konwledge_basis
+Résultat : variable de type Regle 
+Debut
+    return valeur_tete(knowledge_basis)
+Fin
+```
+> On retourne la regle en tête de la base de connaissance.
 
 
-## Jeu d'essai
+## 3. Jeu d'essai
 
 
 
-## Commentaires
+## 4. Commentaires
 
 

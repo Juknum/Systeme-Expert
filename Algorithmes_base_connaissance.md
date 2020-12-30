@@ -21,10 +21,13 @@ Debut
     si knowledge_basis est indéfini alors
         knowledge_basis = r
     sinon
-        tant que knowledge_basis != indéfini
-            knowledge_basis <- suiv(knowledge_basis)
+        BC tampon = knowledge_basis
+        tant que tampon != indéfini
+            tampon <- suiv(tampon)
         fin tant que
-        suiv(knowledge_basis) = r
+        créerBaseVide(tampon2)
+        element_tete(tampon2) = r
+        suiv(tampon) = tampon2
     fin  si 
 Fin
 ```
