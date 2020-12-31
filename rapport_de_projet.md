@@ -1,7 +1,9 @@
-<div style ="text-align:center;">Rapport de projet LO21 : Système expert</div>
+<body style = "background-color = DimGray;">
+</body>
 
-###### Constant Julien, Echard Noé
+<div style = "text-align:center;">Rapport de projet LO21 : Système expert</div>
 
+##### Memebres du binôme : Constant Julien et Echard Noé
 
 ## Table des matières :
 1. [Nos choix de conception d'implémentation et la démarche adoptée](#Paragraphe1)
@@ -14,7 +16,7 @@
 
 ## 1. Nos choix de conception d'implémentation et la démarche adoptée
 
-
+> partie à faire
 
 ## 2. Algorithmes des sous-programmes
 
@@ -254,8 +256,12 @@ Fin
 
 ## 3. Jeu d'essai
 
+Pour le jeu d'essai, nous avons choisi de faire un guide des UV. L'idée est de pouvoir rechercher une UV à partir de plusieurs propositions (comme sa catégorie (CS, TM, etc), son type (Maths, physique, électricité), un thème particulier ou encore les semestres où l'on peut l'étudier (automne, printemps, oul les deux)). Le système peut aussi faire une recherche dans l'autre sens : on lui donne une UV, et il nous renvoie ses caractéristiques. 
 
+:bulb: Images à insérer pour illustrer le travail
+
+> partie à revoir pour plus de contenu
 
 ## 4. Commentaires
 
-
+> partie à faire
