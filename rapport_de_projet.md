@@ -1,4 +1,4 @@
-<div style="text-align:center;"> # Rapport de projet LO21 : Système expert</div>
+<div style="text-align:right;">Rapport de projet LO21 : Système expert</div>
 
 # Rapport de projet LO21 : Système expert
 
