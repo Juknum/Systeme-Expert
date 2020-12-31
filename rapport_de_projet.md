@@ -1,3 +1,5 @@
+<div style="text-align:center;"> # Rapport de projet LO21 : Système expert</div>
+
 # Rapport de projet LO21 : Système expert
 
 ###### Constant Julien, Echard Noé
