@@ -1,18 +1,18 @@
-<div style = "text-align:center;">
-	<p style = "font-size:30px;">
-Rapport de projet LO21 : Système expert
-	</p>
-</div>
+<p text-align="center" style = "font-size:30px;">
+	Rapport de projet LO21 : Système expert
+</p>
 
-<div style = "font-size:10px;">
-Membres du binôme : Constant Julien et Echard Noé
-</div>
+<p style="font-size:10px;">
+	Membres du binôme : Constant Julien et Echard Noé
+</p>
+
+---
 
 ## Table des matières :
 1. [Nos choix de conception d'implémentation et la démarche adoptée](#Paragraphe1)
 2. [Algorithmes des sous-programmes](#Paragraphe2)
-    1. [Algorithmes des règles](#SousParagraphe1)
-    2. [Algorithmes de la base de connaissance](#SousParagraphe2)
+	1. [Algorithmes des règles](#SousParagraphe1)
+	2. [Algorithmes de la base de connaissance](#SousParagraphe2)
 3. [Jeu d'essai](#Paragraphe3)
 4. [Commentaires](#Paragraphe4)
 
@@ -22,8 +22,7 @@ Membres du binôme : Constant Julien et Echard Noé
 > partie à faire
 
 ## 2. Algorithmes des sous-programmes
-
-   ### 1. Liste des sous-programmes des règles
+### 1. Liste des sous-programmes des règles
 
 **Créer une règle vide**
 ```pseudocode
@@ -45,7 +44,7 @@ Données : Regle r
 Résultat : VRAI si r est vide
 Debut
 	si r est indéfini
-	    retourner VRAI
+			retourner VRAI
 	sinon
 		retourner FAUX
 	fin si
@@ -82,7 +81,7 @@ Fin
 ```pseudocode
 Fonction ajouter_proposition
 Données : Regle r
-		  string proposition)
+			string proposition)
 Résultat : Regle r 
 Debut
 	si est_vide_regle(r) est VRAI alors
@@ -111,7 +110,7 @@ Fin
 ```pseudocode
 Fonction creer_conclusion
 Données : Regle r
-		  string proposition
+			string proposition
 Résultat : Regle r
 Debut
 Regle l = r
@@ -128,7 +127,7 @@ Fin
 ```pseudocode
 Fonction est_proposition
 Données : Premisse p
-		  string proposition
+			string proposition
 Résultat : VRAI si la proposition appartient à la prémisse
 Debut
 	si est_vide_premisse(p) est VRAI alors
@@ -149,7 +148,7 @@ fin
 ```pseudocode
 Fonction retirer_proposition
 Données : Premisse p
-		  string proposition
+			string proposition
 Résultat : Premisse p
 Debut
 	si est_vide_premisse(p) est VRAI alors
@@ -208,8 +207,7 @@ fin
 ```
 > On teste si la conclusion de la règle est vide. Si c'est le cas, on retourne indéfini. Sinon on retourne le contenu de la conclusion de r.
 
-
-   ### 2. Liste des sous-programmes de la base de connaissance
+### 2. Liste des sous-programmes de la base de connaissance
 
 **Créer une base vide**
 ```pseudocode
@@ -217,8 +215,8 @@ Fonction créerBaseVide
 Données : pas de données
 Résultat : BC new_basis
 Debut 
-    new_basis <- new(BC)
-    retourner new_basis
+		new_basis <- new(BC)
+		retourner new_basis
 Fin
 ```
 > On alloue de la mémoire pour une variable de type BC que l'on retourne ensuite
@@ -227,20 +225,20 @@ Fin
 ```pseudocode
 Fonction ajouterRegleBase
 Données : BC knowledge_basis
-         Regle r
+				 Regle r
 Résultat : BC knowledge_basis
 Debut
-    si knowledge_basis est indéfini alors
-        knowledge_basis = r
-    sinon
-        BC tampon = knowledge_basis
-        tant que tampon != indéfini
-            tampon <- suiv(tampon)
-        fin tant que
-        créerBaseVide(tampon2)
-        element_tete(tampon2) = r
-        suiv(tampon) = tampon2
-    fin  si 
+		si knowledge_basis est indéfini alors
+				knowledge_basis = r
+		sinon
+				BC tampon = knowledge_basis
+				tant que tampon != indéfini
+						tampon <- suiv(tampon)
+				fin tant que
+				créerBaseVide(tampon2)
+				element_tete(tampon2) = r
+				suiv(tampon) = tampon2
+		fin  si 
 Fin
 ```
 > On teste si la base est vide. Si c'est le cas, on copie simplement la règle de la base de connaissance. Sinon, on parcourt la base à l'aide d'une base tampon, puis à l'aide d'un autre tampon on met la règle en queue de la première base tampon. 
@@ -251,11 +249,10 @@ Fonction headValueBasis
 Données : BC konwledge_basis
 Résultat : variable de type Regle 
 Debut
-    return valeur_tete(knowledge_basis)
+		return valeur_tete(knowledge_basis)
 Fin
 ```
 > On retourne la regle en tête de la base de connaissance.
-
 
 ## 3. Jeu d'essai
 

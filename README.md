@@ -22,20 +22,20 @@ On considère une règle comme une liste de proposition, dont le dernier éléme
 ## 2. Questions
 1. Définir un type abstrait de données appelé **Regle** permettant de définir les règles d'une base de connaissances. Ecrire l'algorithme et le sous-programme C correspondant aux opérations suivantes :
 
-- [ ] Créer une règle vide,
-- [ ] Ajouter une proposition à la prémisse d'une règle, l'ajout se fait en queue
-- [ ] Créer la conclusion d'une règle
-- [ ] Tester si une proposition appartient à la prémisse d'une règle, **de manière recursive**
-- [ ] Supprimer une proposition de la prémisse d'une règle
-- [ ] Tester si la prémisse d'une règle est vide
-- [ ] Accéder à la proposition se trouvant en tête d'une prémisse
-- [ ] Accéder à la conclusion d'une règle
+- [x] Créer une règle vide,
+- [x] Ajouter une proposition à la prémisse d'une règle, l'ajout se fait en queue
+- [x] Créer la conclusion d'une règle
+- [x] Tester si une proposition appartient à la prémisse d'une règle, **de manière recursive**
+- [x] Supprimer une proposition de la prémisse d'une règle
+- [x] Tester si la prémisse d'une règle est vide
+- [x] Accéder à la proposition se trouvant en tête d'une prémisse
+- [x] Accéder à la conclusion d'une règle
 
 2. Définir un type abstrait **BC** permettant de définir des bases de connaissances comme liste de règles. Ecrire l'algorithme et le sous-programme C correspondant aux opérations suivantes :
 
-- [ ] Créer une base vide
-- [ ] Ajouter une règle à une base, l'ajout peut se faire en queue
-- [ ] Accéder à la règle se trouvant en tête de la base
+- [x] Créer une base vide
+- [x] Ajouter une règle à une base, l'ajout peut se faire en queue
+- [x] Accéder à la règle se trouvant en tête de la base
 
 3. Ecrire l'algorithme et le programme C réalisant le moteur d'inférence (comme expliqué en cours). Un moteur d'inférence permet de déduire des faits certains (vrais) en partant de la base de faits et en appliquant les règles de la base de connaissance. L'algorithme et le programme doivent utiliser les opérations des 2 questions précédentes et éventuellement, les autres opérations prédéfinies sur le type abstrait liste étudié en cours.
 
@@ -43,7 +43,7 @@ On considère une règle comme une liste de proposition, dont le dernier éléme
 
 Le rapport devra contenir les éléments suivants :
 - [ ] Description des choix de conception et d'implémentation relatifs aux structures de données utilisées et à la démarche adoptée.
-- [ ] Algorithmes des sous programmes (en utilisant des opérations abstraites) et leurs explications.
+- [x] Algorithmes des sous programmes (en utilisant des opérations abstraites) et leurs explications.
 - [ ] Jeux d'essais.
 - [ ] Commentaires sur les résultats.
 

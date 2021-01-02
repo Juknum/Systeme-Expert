@@ -8,7 +8,7 @@ int main(){
 
 	Regle Regle1 = createRule();
 	Regle1 = addProposition(Regle1, "CS");
-	Regle1 = addProposition(Regle1, "Mathématique");
+	Regle1 = addProposition(Regle1, "Mathématiques");
 	Regle1 = addProposition(Regle1, "Primtemps Uniquement");
 	Regle1 = createConclusion(Regle1, "SQ20");
 
