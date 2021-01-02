@@ -34,7 +34,7 @@ BC createBasis(){
  
  /*------------------------------------*/
 
- Bool isEmptyKnowledgeBasis(BC knowledge_basis){
+ bool isEmptyKnowledgeBasis(BC knowledge_basis){
 	 if(knowledge_basis == NULL)return true;
 	 return false;
  }

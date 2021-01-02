@@ -5,7 +5,7 @@ BF createFactBasis(){
 	return fact_basis;
 }
 
-Bool isEmptyFactBasis(BF fact_basis){
+bool isEmptyFactBasis(BF fact_basis){
 	return fact_basis == NULL;
 }
 

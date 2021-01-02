@@ -9,7 +9,7 @@ void inference_motor(BC knowledge_basis, BF fact_basis){
 	}
 
 	else {
-		Bool comp;
+		bool comp;
 		Premisse buffer = fact_basis;
 
 		while(buffer->next != NULL){
@@ -20,7 +20,7 @@ void inference_motor(BC knowledge_basis, BF fact_basis){
 			do{
         comp = isProposition(knowledge_basis->head->premisse, fact_basis->proposition);
 				if(comp == true){
-          knowledge_basis->head->premisse = deleteProposition;(knowledge_basis->head->premisse, fact_basis->proposition);
+          knowledge_basis->head->premisse = deleteProposition(knowledge_basis->head->premisse, fact_basis->proposition);
             if(knowledge_basis->head->premisse == NULL){
               Premisse new = (Premisse)malloc(sizeof(ElemBC));
               new->proposition = knowledge_basis->head->conclusion;

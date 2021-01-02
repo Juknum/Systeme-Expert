@@ -27,7 +27,7 @@ BC createBasis();
  * @param knowledge_basis base de connaissance à tester
  * @return booléen sur la base de connaissance
  */
-Bool isEmptyKnowledgeBasis(BC knowledge_basis);
+bool isEmptyKnowledgeBasis(BC knowledge_basis);
 
 /********************************
  * @brief fonction d'ajout de règle à une base

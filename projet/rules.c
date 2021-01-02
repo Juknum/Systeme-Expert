@@ -4,21 +4,21 @@
 
 /*------------------------------------*/
 
-Bool isEmptyRule(Regle r){
+bool isEmptyRule(Regle r){
 	if (r.conclusion == NULL && r.premisse == NULL) return true;
 	return false;
 }
 
 /*------------------------------------*/
 
-Bool isEmptyPremisse(Premisse p){
+bool isEmptyPremisse(Premisse p){
 	if (p == NULL) return true;
 	return false;
 }
 
 /*------------------------------------*/
 
-Bool isEmptyConclusion(Regle r){
+bool isEmptyConclusion(Regle r){
 	if (r.conclusion == NULL) return true;
 	return false;
 }
@@ -72,7 +72,7 @@ Regle createConclusion(Regle r, char* content){
 
 /*------------------------------------*/
 
-Bool isProposition(Premisse p, char* content){
+bool isProposition(Premisse p, char* content){
 	if(isEmptyPremisse(p)){
 		return false;
 	}

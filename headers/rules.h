@@ -5,16 +5,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#define false 0
-#define true 1
-
 /*
  * Booléen:
 */
-typedef enum {
-	false;
-	true
-} Bool;
+#include <stdbool.h>
+// typedef enum { false, true } bool;
 
 /*
  * Définition d'une Proposition :
@@ -54,7 +49,7 @@ Regle createRule();
  * @param rule variable de type regle à tester
  * @return booléen sur la variable
  */
-Bool isEmptyRule(Regle r);
+bool isEmptyRule(Regle r);
 
 /**********************************
  * @brief fonction testant si la premisse d'une regle est vide ou non
@@ -62,7 +57,7 @@ Bool isEmptyRule(Regle r);
  * @param p variable de type prémisse à tester
  * @return booléen sur la variable
  */
-Bool isEmptyPremisse(Premisse p);
+bool isEmptyPremisse(Premisse p);
 
 /**********************************
  * @brief fonction testant si la conclusion d'une regle est vide ou non
@@ -70,7 +65,7 @@ Bool isEmptyPremisse(Premisse p);
  * @param r variable de type regle à tester
  * @return booléen sur la variable
  */
-Bool isEmptyConclusion(Regle r);
+bool isEmptyConclusion(Regle r);
 
 /****************************************
  * @brief fonction d'ajout d'une proposition à une prémisse
@@ -97,7 +92,7 @@ Regle createConclusion(Regle r, char* content);
  * @param proposition chaine de caractère contenant la porposition à comparer à la prémisse
  * @return booléen sur la comparaison
  */
-Bool isProposition(Premisse p, char* content);
+bool isProposition(Premisse p, char* content);
 
 /****************************************
  * @brief fonction de suppression de proposition dans une prémisse

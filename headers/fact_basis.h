@@ -24,7 +24,7 @@ BF createFactBasis();
  * @param fact_basis variable de type BF à tester
  * @return Booléen sur la base de fait
  */
-Bool isEmptyFactBasis(BF fact_basis);
+bool isEmptyFactBasis(BF fact_basis);
 
 
 /*****************************
