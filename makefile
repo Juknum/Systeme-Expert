@@ -2,15 +2,28 @@
 ##############################    MAKEFILE    ##############################
 ############################################################################
 
-SOURCES = $(wildcard sources/*.c)
-HEADERS = $(wildcard headers/*.h)
-CC  = gcc
-EXE = results
+CC=gcc
+CFLAGS= -W -Wall -ansi -pedantic
+LDFLAGS=
+EXEC=results
 
-results: ${SOURCES} ${HEADERS}
-	$(CC) ${SOURCES} -o results.exe
+SRC= $(wildcard sources/*.c)
+OBJ= $(SRC: .c=.o)
 
-# Target to clean up after us
+all: $(EXEC)
+
+results: $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+main.o : $(wildcard headers/*.h)
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: clean mrproper
+
 clean:
-	-rm -f $(EXE)      # Remove the executable file
-	-rm -f $(OBJECTS)  # Remove the object files
+	@rm -rf *.o
+
+mrproper: clean
+	@rm -rf $(EXEC)

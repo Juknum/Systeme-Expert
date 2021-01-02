@@ -4,6 +4,9 @@
 
 int main(void){
 
+	system("chcp 65001");
+	printf("ICI\n");
+
 	//Création des règles
 
 	Regle Regle1 = createRule();
@@ -12,6 +15,7 @@ int main(void){
   Regle1 = addProposition(Regle1, "Statistiques");
 	Regle1 = addProposition(Regle1, "Primtemps Uniquement");
 	Regle1 = createConclusion(Regle1, "SQ20");
+
 
 	Regle Regle2 = createRule();
 	Regle2 = addProposition(Regle2, "CS");
@@ -48,7 +52,9 @@ int main(void){
 	Regle6 = addProposition(Regle6, "Automne uniquement");
 	Regle6 = createConclusion(Regle6, "GE07");
 
+
 	//Création de la base de connaissance
+	printf("ICI");
 
 	BC knowledge_basis = createBasis();
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle1);
@@ -58,10 +64,11 @@ int main(void){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle5);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle6);
 
+	printf("OU LA BAS");
+
   //Création de la base de fait 
 
   BF fact_basis = createFactBasis();
-
 
   /////////////////////////////////////////////////////
   ////////////////INTERFACE////////////////////////////
@@ -76,10 +83,12 @@ int main(void){
   printf("3. Réinitialiser le système\n");
   printf("4. Quitter le logiciel\n");
   printf("Votre choix : ");
+
   int choix = 0;
-  while(choix != 1 || choix != 2 || choix != 3 || choix != 4){
-    scanf("%d", &choix);
-  }
+
+  do {
+  	scanf("%d", &choix);
+  } while (choix > 4 || choix < 1);
 
   switch(choix){
     case 1 :

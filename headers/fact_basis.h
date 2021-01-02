@@ -13,7 +13,7 @@ typedef Proposition* BF;
 /******************************
  * @brief fonction de création d'une base de fait
  *
- * @return base de fait créée
+ * @return la base de fait créée
  */
 BF createFactBasis();
 

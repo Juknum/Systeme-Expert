@@ -16,11 +16,14 @@ BC createBasis(){
 	}
 	else {
 		BC buffer = knowledge_basis;
+		
 		while(buffer->next != NULL){
 			buffer = buffer->next;
 		}
+
 		BC new = (BC)malloc(sizeof(ElemBC));
 		new->head = r;
+		new->next = NULL;
 		buffer->next = new;
 	}
 	return knowledge_basis;

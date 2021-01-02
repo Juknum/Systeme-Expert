@@ -32,26 +32,30 @@ Regle createRule(){
 
 /*------------------------------------*/
 
-Regle addProposition(Regle r, char* content){
+Regle addProposition(Regle r, char* text){
 	if(isEmptyRule(r)){
 		r.premisse = (Premisse)malloc(sizeof(Proposition));
-		r.premisse->content = malloc(strlen(content));
-		strcpy(r.premisse->content, content);
+		r.premisse->content = malloc(strlen(text));
+		strcpy(r.premisse->content, text);
 		r.premisse->next = NULL;
 	}
-	else if(isProposition(r.premisse, content) == false){
+	else if(isProposition(r.premisse, text) == false){
 		Regle buffer = r;
-		while(isEmptyPremisse(buffer.premisse->next)){
+
+		while(!isEmptyPremisse(buffer.premisse->next)){
 			buffer.premisse = buffer.premisse->next;
 		}
+
 		Premisse new = (Premisse)malloc(sizeof(Proposition));
-		new->content = malloc(sizeof(strlen(content)));
-		strcpy(new->content, content);
+		new->content = (char*)malloc(strlen(text)+1);
+		strcpy(new->content, text);
+		new->next = NULL;
 		buffer.premisse->next = new;
 	}
 	else {
 		printf("Vous avez déjà mis cette proposition dans cette prémisse");
 	}
+	printf("AHH\n");
 	return r;
 }
 
@@ -62,7 +66,7 @@ Regle createConclusion(Regle r, char* content){
 		printf("La prémisse de cette règle est vide, impossible de faire un conclusion");
 	}
 	else {
-		r.conclusion = (char *)malloc(sizeof(strlen(content)));
+		r.conclusion = (char *)malloc(strlen(content)+1);
 		strcpy(r.conclusion, content);
 	}
 	return r;
