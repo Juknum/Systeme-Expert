@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "rules.h"
-#include "knowledge_basis.h"
-#include "fact_basis.h"
+#include "../headers/rules.h"
+#include "../headers/knowledge_basis.h"
+#include "../headers/fact_basis.h"
 
 void inference_motor(BC knowledge_basis, BF fact_basis);
 

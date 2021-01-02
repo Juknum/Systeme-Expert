@@ -1,4 +1,4 @@
-#include "fact_basis.h"
+#include "../headers/fact_basis.h"
 
 BF createFactBasis(){
 	BF fact_basis = NULL;

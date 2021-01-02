@@ -1,8 +1,8 @@
 #ifndef __FACT__BASIS__H__
 #define __FACT__BASIS__H__
 
-#include "rules.h"
-#include "knowledge_basis.h"
+#include "../headers/rules.h"
+#include "../headers/knowledge_basis.h"
 
 
 //On recycle la structure Proposition utilisée pour les prémisses car les deux sont fait de la même manière

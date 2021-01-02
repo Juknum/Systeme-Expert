@@ -1,6 +1,6 @@
-#include "rules.h"
-#include "knowledge_basis.h"
-#include "fact_basis.h"
+#include "../headers/rules.h"
+#include "../headers/knowledge_basis.h"
+#include "../headers/fact_basis.h"
 
 int main(){
 

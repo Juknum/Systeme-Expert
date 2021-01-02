@@ -1,7 +1,7 @@
 #ifndef __KNOWLEDGE__BASIS__H__
 #define __KNOWLEDGE__BASIS__H__
 
-#include "rules.h"
+#include "../headers/rules.h"
 
 typedef struct BC{
     Regle head;

@@ -5,11 +5,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#define false 0
+#define true 1
+
 /*
  * Booléen:
 */
 typedef enum {
-	false,
+	false;
 	true
 } Bool;
 
