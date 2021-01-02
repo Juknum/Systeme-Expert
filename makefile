@@ -1,28 +1,16 @@
-# Makefile used for compilation
+############################################################################
+##############################    MAKEFILE    ##############################
+############################################################################
 
-CC=gcc
-CFLAGS= -W -Wall -ansi -pedantic
-LDFLAGS=
-EXEC=launch
+SOURCES = $(wildcard sources/*.c)
+HEADERS = $(wildcard headers/*.h)
+CC  = gcc
+EXE = results
 
-SRC= $(wildcard projet/*.c)
-HDR = $(wildcard headers/*.h)
-OBJ= $(SRC: .c=.o)
+results: ${SOURCES} ${HEADERS}
+	$(CC) ${SOURCES} -o results.exe
 
-all: $(EXEC)
-
-launch: $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
-
-main.o : ${HDR}
-
-%.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGS)
-
-.PHONY: clean mrproper
-
+# Target to clean up after us
 clean:
-	@rm -rf *.o
-
-mrproper: clean
-	@rm -rf $(EXEC)
+	-rm -f $(EXE)      # Remove the executable file
+	-rm -f $(OBJECTS)  # Remove the object files
