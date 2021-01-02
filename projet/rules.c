@@ -1,7 +1,5 @@
 #include "../headers/rules.h"
 
-#define NULL ((void *)0)
-
 /*------------------------------------*/
 
 bool isEmptyRule(Regle r){
@@ -120,7 +118,7 @@ Premisse deleteProposition(Premisse p, char* proposition){
 
 /*------------------------------------*/
 
-char headValuePremisse(Regle r){
+char* headValuePremisse(Regle r){
 	if(isEmptyPremisse(r.premisse)){
 		return NULL;
 	}

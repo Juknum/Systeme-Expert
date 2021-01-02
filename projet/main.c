@@ -2,24 +2,27 @@
 #include "../headers/knowledge_basis.h"
 #include "../headers/fact_basis.h"
 
-int main(){
+int main(void){
 
 	//Création des règles
 
 	Regle Regle1 = createRule();
 	Regle1 = addProposition(Regle1, "CS");
 	Regle1 = addProposition(Regle1, "Mathématiques");
+  Regle1 = addProposition(Regle1, "Statistiques");
 	Regle1 = addProposition(Regle1, "Primtemps Uniquement");
 	Regle1 = createConclusion(Regle1, "SQ20");
 
 	Regle Regle2 = createRule();
 	Regle2 = addProposition(Regle2, "CS");
+  Regle2 = addProposition(Regle2, "Informatique");
 	Regle2 = addProposition(Regle2, "Algorithmie");
 	Regle2 = addProposition(Regle2, "Automne uniquement");
 	Regle2 = createConclusion(Regle2, "LO21");
 
 	Regle Regle3 = createRule();
 	Regle3 = addProposition(Regle3, "TM");
+  Regle3 = addProposition(Regle3, "Informatique");
 	Regle3 = addProposition(Regle3, "Systeme Linux");
 	Regle3 = addProposition(Regle3, "Printemps uniquement");
 	Regle3 = createConclusion(Regle3, "LP25");
@@ -54,4 +57,48 @@ int main(){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle4);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle5);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle6);
+
+  //Création de la base de fait 
+
+  BF fact_basis = createFactBasis();
+
+
+  /////////////////////////////////////////////////////
+  ////////////////INTERFACE////////////////////////////
+
+  printf("*******************************************\n");
+  printf("******Système expert : Recherche d'UV******\n");
+  printf("*******************************************\n");
+
+  printf("Bienvenue, que souhaitez-vous faire ?\n");
+  printf("1. Rechercher une UV\n");
+  printf("2. Acceder à la liste complète des UV\n");
+  printf("3. Réinitialiser le système\n");
+  printf("4. Quitter le logiciel\n");
+  printf("Votre choix : ");
+  int choix = 0;
+  while(choix != 1 || choix != 2 || choix != 3 || choix != 4){
+    scanf("%d", &choix);
+  }
+
+  switch(choix){
+    case 1 :
+			printf("Not done yet");
+      break;
+    case 2 :
+			printf("Not done yet");
+      printf("Voici la liste des UV et de leur caractéristiques : \n");
+      displayKnowledgeBasis(knowledge_basis);
+      break;
+    case 3 :
+      deleteFactBasis(fact_basis);
+      deleteKnowledgeBasis(knowledge_basis);
+      printf("Données supprimmées");
+      break;
+    case 4 :
+      exit(0);
+      break;
+  }
+	
+	return 0;
 }

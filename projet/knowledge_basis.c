@@ -53,3 +53,21 @@ BC createBasis(){
 		printf("***Fin de la base de connaissance***");
 	}
 }
+
+void deleteKnowledgeBasis(BC knowledge_basis){
+  if(isEmptyKnowledgeBasis(knowledge_basis)){
+    printf("Base déjà vide");
+  }
+  else{
+    BC buffer = knowledge_basis;
+    while(buffer->next != NULL){
+    	buffer->head.conclusion = NULL;
+      while(buffer->head.premisse->content != NULL){
+        buffer->head.premisse->content = NULL;
+        buffer->head.premisse = buffer->head.premisse->next;
+      }
+      buffer = buffer->next;
+		}
+    knowledge_basis = buffer;
+  }
+}

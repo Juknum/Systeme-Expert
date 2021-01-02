@@ -1,14 +1,28 @@
 # Makefile used for compilation
 
-SRC = $(wildcard projet/*.c)
+CC=gcc
+CFLAGS= -W -Wall -ansi -pedantic
+LDFLAGS=
+EXEC=launch
+
+SRC= $(wildcard projet/*.c)
 HDR = $(wildcard headers/*.h)
-COMPILE = gcc -o projet/main.o projet/main.c
+OBJ= $(SRC: .c=.o)
 
-.PHONY: create
-.PHONY: clean
+all: $(EXEC)
 
-create: ${SRC} ${HDR}
-	${COMPILE} ${SRC} ${HDR}
+launch: $(OBJ)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+main.o : ${HDR}
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+.PHONY: clean mrproper
 
 clean:
-	rm *.o
+	@rm -rf *.o
+
+mrproper: clean
+	@rm -rf $(EXEC)

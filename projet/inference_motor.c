@@ -18,14 +18,14 @@ void inference_motor(BC knowledge_basis, BF fact_basis){
 
 		do{
 			do{
-        comp = isProposition(knowledge_basis->head->premisse, fact_basis->proposition);
+        comp = isProposition(knowledge_basis->head.premisse, fact_basis->content);
 				if(comp == true){
-          knowledge_basis->head->premisse = deleteProposition(knowledge_basis->head->premisse, fact_basis->proposition);
-            if(knowledge_basis->head->premisse == NULL){
+          knowledge_basis->head.premisse = deleteProposition(knowledge_basis->head.premisse, fact_basis->content);
+            if(knowledge_basis->head.premisse == NULL){
               Premisse new = (Premisse)malloc(sizeof(ElemBC));
-              new->proposition = knowledge_basis->head->conclusion;
-              end->next = new;
-              printf("%s\n", end->proposition);
+              new->content = knowledge_basis->head.conclusion;
+              buffer->next = new;
+              printf("%s\n", buffer->content);
             }
         }
 

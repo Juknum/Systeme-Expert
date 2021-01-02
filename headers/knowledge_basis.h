@@ -46,4 +46,20 @@ BC addRuleBasis(BC knowledge_basis, Regle r);
  */
 Regle headValueBasis(BC knowledge_basis);
 
+/********************************
+ * @brief fonction pour supprimer une base de connaissance
+ * 
+ * @param knoledge_basis variable de type BC acceuillant la base de connaissance
+ * @return pas de return
+ */
+void deleteKnowledgeBasis(BC knowledge_basis);
+
+/********************************
+ * @brief fonction pour afficher une base de connaissance
+ * 
+ * @param knoledge_basis variable de type BC acceuillant la base de connaissance
+ * @return pas de return
+ */
+void displayKnowledgeBasis(BC knowledge_basis);
+
 #endif

@@ -109,7 +109,7 @@ Premisse deleteProposition(Premisse p, char* proposition);
  * @param r variable de type regle contenant la prémisse
  * @return chaine de caractère de la tête de la prémisse
  */
-char headValuePremisse(Regle r);
+char* headValuePremisse(Regle r);
 
 /****************************************
  * @brief fonction retournant le contenu d'une conclusion
