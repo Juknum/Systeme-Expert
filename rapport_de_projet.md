@@ -1,9 +1,12 @@
-<body style = "background-color = DimGray;">
-</body>
+<div style = "text-align:center;">
+	<p style = "font-size:30px;">
+Rapport de projet LO21 : Système expert
+	</p>
+</div>
 
-<div style = "text-align:center;">Rapport de projet LO21 : Système expert</div>
-
-##### Memebres du binôme : Constant Julien et Echard Noé
+<div style = "font-size:10px;">
+Membres du binôme : Constant Julien et Echard Noé
+</div>
 
 ## Table des matières :
 1. [Nos choix de conception d'implémentation et la démarche adoptée](#Paragraphe1)
