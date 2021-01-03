@@ -6,7 +6,8 @@
 /********************************
  * @brief fonction d'affichage du menu
  * 
- * @param aucun
+ * @param knowledge_basis base de connaissance du guide des UV
+ * @param fact_basis base de fait de l'utilisateur
  * @return pas de return
  */
 void menu(BC knowledge_basis, BF fact_basis);
