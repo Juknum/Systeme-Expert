@@ -256,13 +256,15 @@ void menu(BC knowledge_basis, BF fact_basis){
           ajoutRegle = addProposition(ajoutRegle, "Tout semestre");
       }
 
-      printf("Quelle est la conclusion ?\n");
+      printf("Quelle est le nom de l'uv ?\n");
       char conclusion[15];
       scanf("%s", conclusion);
       char* ptr3 = conclusion;
       ajoutRegle = createConclusion(ajoutRegle, ptr3);
 
       knowledge_basis = addRuleBasis(knowledge_basis, ajoutRegle);
+
+      menu(knowledge_basis, fact_basis);
 
       break;
     case 5 :
