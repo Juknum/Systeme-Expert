@@ -68,12 +68,6 @@ int main(void){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle6);
 
 	BF fact_basis = createFactBasis();
-	fact_basis = addFactFactBasis(fact_basis, "SQ20 est en Printemps uniquement");
-	fact_basis = addFactFactBasis(fact_basis, "LP25 est en Printemps uniquement");
-	fact_basis = addFactFactBasis(fact_basis, "LO21 est en Automne uniquement");
-	fact_basis = addFactFactBasis(fact_basis, "GE07 est en Automne uniquement");
-	fact_basis = addFactFactBasis(fact_basis, "LR00 est en Automne et en Printemps");
-	fact_basis = addFactFactBasis(fact_basis, "HE09 est en Automne et en Printemps");	
 
 	CLEAR;
 	
@@ -112,7 +106,71 @@ void menu(BC knowledge_basis, BF fact_basis){
   switch(choix){
     case 1 :
 			CLEAR;
-			printf("Not done yet\n");
+      printf("Quel est le type d'UV ?\n");
+			printf("L'UV est : 1. CS\n");
+      printf("           2. TM\n");
+			printf("           3. EC\n");
+			printf("           4. QC\n");
+			printf("           5. OM\n");
+      printf("Tapez votre nombre de 1 à 5 pour choisir : ");
+
+      int type = 0;
+      do {
+        scanf("%d", &type);
+      }while(type > 5 || type < 1);
+
+      switch(type){
+        case 1 : 
+          fact_basis = addFactFactBasis(fact_basis, "CS");
+          break;
+        case 2 : 
+          fact_basis = addFactFactBasis(fact_basis, "TM");
+          break;
+        case 3 : 
+          fact_basis = addFactFactBasis(fact_basis, "EC");
+          break;
+        case 4 : 
+          fact_basis = addFactFactBasis(fact_basis, "QC");
+          break;
+        case 5 : 
+          fact_basis = addFactFactBasis(fact_basis, "OM");
+          break;
+      }
+
+      printf("Quelle est la matière abordée ?\n");
+      char matiere[15];
+      scanf("%s", matiere);
+      char* ptr = matiere;
+      fact_basis = addFactFactBasis(fact_basis, ptr);
+
+      printf("Quelle est le theme abordé ?\n");
+      char theme[15];
+      scanf("%s", theme);
+      char* ptr2 = theme;
+      fact_basis = addFactFactBasis(fact_basis, ptr2);
+
+      printf("Quand l'UV est-elle disponible ?\n");
+      printf("1.Automne uniquement");
+      printf("2. Printemps uniquement");
+      printf("3. Tout semestre");
+
+      int semestre = 0;
+      do{
+        scanf("%d", &semestre);
+      }while(semestre < 1 || semestre > 3);
+
+      switch(semestre){
+        case 1 :
+          fact_basis = addFactFactBasis(fact_basis, "Automne uniquement");
+        break;
+        case 2 : 
+          fact_basis = addFactFactBasis(fact_basis, "Printemps uniquement");
+        break;
+        case 3 :
+          fact_basis = addFactFactBasis(fact_basis, "Tout semestre");
+      }
+
+      inference_motor(knowledge_basis, fact_basis);
 			menu(knowledge_basis, fact_basis);
       break;
     case 2 :
