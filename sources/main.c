@@ -93,15 +93,13 @@ void menu(BC knowledge_basis, BF fact_basis){
 	printf("\n");
 	printf("1. Rechercher une UV\n");
   printf("2. Accéder à la liste complète des UVs\n");
-	printf("3. Accéder à la base de fait\n");
-  printf("4. Réinitialiser le système\n");
-	printf("5. Ajouter des informations\n");
-  printf("6. Quitter le programme\n\n");
+  printf("3. Réinitialiser le système\n");
+  printf("4. Quitter le programme\n\n");
   printf("Votre choix : ");
 
   do {
   	scanf("%d", &choix);
-  } while (choix > 6 || choix < 1);
+  } while (choix > 4 || choix < 1);
 
   switch(choix){
     case 1 :
@@ -180,24 +178,13 @@ void menu(BC knowledge_basis, BF fact_basis){
       displayKnowledgeBasis(knowledge_basis);
 			menu(knowledge_basis, fact_basis);
       break;
-		case 3 :
-			CLEAR;
-			printf("Voici la base de fait:\n");
-			displayFactBasis(fact_basis);
-			menu(knowledge_basis, fact_basis);
-			break;
-    case 4 :
+    case 3 :
 			CLEAR;
       deleteFactBasis(fact_basis);
       deleteKnowledgeBasis(knowledge_basis);
 			menu(knowledge_basis, fact_basis);
       break;
-		case 5 :
-			CLEAR;
-			printf("Not done yet\n");
-			menu(knowledge_basis, fact_basis);
-			break;
-    case 6 :
+    case 4 :
       exit(0);
       break;
   }
