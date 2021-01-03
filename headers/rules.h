@@ -20,7 +20,6 @@ typedef struct proposition {
 } Proposition;
 
 typedef Proposition* Premisse;
-
 typedef char* Conclusion;
 
 /*

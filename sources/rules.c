@@ -55,7 +55,6 @@ Regle addProposition(Regle r, char* text){
 	else {
 		printf("Vous avez déjà mis cette proposition dans cette prémisse");
 	}
-	printf("AHH\n");
 	return r;
 }
 
@@ -146,15 +145,15 @@ char* valueConclusion(Regle r){
 
 void displayRule(Regle r){
 	if(isEmptyRule(r)){
-		printf("\nLa règle est vide");
+		printf("*** La règle est vide ***\n");
 	}
 	else{
-		printf("***Regle***");
+		//printf("*** Règle ***\n");
 		Regle buffer = r;
 		while(buffer.premisse != NULL){
-			puts(buffer.premisse->content);
+			printf("- %s\n",buffer.premisse->content);
 			buffer.premisse = buffer.premisse->next;
 		}
-		puts(r.conclusion);
+		printf("= %s\n\n",r.conclusion);
 	}
 }

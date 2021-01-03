@@ -33,7 +33,7 @@ bool isEmptyFactBasis(BF fact_basis);
  * @param fact_basis variable de type BF qu'on affiche
  * @return pas de return
  */
-void DisplayFactBasis(BF fact_basis);
+void displayFactBasis(BF fact_basis);
 
 
 /*****************************

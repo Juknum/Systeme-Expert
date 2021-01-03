@@ -10,8 +10,6 @@ EXEC=results
 SRC= $(wildcard sources/*.c)
 OBJ= $(SRC: .c=.o)
 
-all: $(EXEC)
-
 results: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 

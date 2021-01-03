@@ -9,7 +9,7 @@ BC createBasis(){
 
 /*------------------------------------*/
 
- BC addRuleBasis(BC knowledge_basis, Regle r){
+BC addRuleBasis(BC knowledge_basis, Regle r){
 	if (knowledge_basis == NULL){
 		knowledge_basis->head = r;
 		knowledge_basis->next = NULL;
@@ -27,50 +27,58 @@ BC createBasis(){
 		buffer->next = new;
 	}
 	return knowledge_basis;
- }
+}
 
- /*------------------------------------*/
+/*------------------------------------*/
 
- Regle headValueBasis(BC knowledge_basis){
+Regle headValueBasis(BC knowledge_basis){
 	return knowledge_basis->head;
- }
+}
  
- /*------------------------------------*/
+/*------------------------------------*/
 
- bool isEmptyKnowledgeBasis(BC knowledge_basis){
-	 if(knowledge_basis == NULL)return true;
-	 return false;
- }
+bool isEmptyKnowledgeBasis(BC knowledge_basis){
+	if(knowledge_basis->next == NULL) return true;
+	return false;
+}
 
- void displayKnowledgeBasis(BC knowledge_basis){
+/*------------------------------------*/
+
+void displayKnowledgeBasis(BC knowledge_basis){
 	if(isEmptyKnowledgeBasis(knowledge_basis)){
-		printf("***Base de connaissance vide***");
+		printf("*** Base de connaissance vide ***\n");
 	}
 	else{
 		BC buffer = knowledge_basis;
-		printf("***Voici la base de connaissance***");
+		buffer = buffer->next;
+		printf("*** Voici la base de connaissance ***\n");
 		while(buffer != NULL){
 			displayRule(headValueBasis(buffer));
 			buffer = buffer->next;
 		}
-		printf("***Fin de la base de connaissance***");
+		printf("*** Fin de la base de connaissance ***\n");
 	}
 }
 
+/*------------------------------------*/
+
 void deleteKnowledgeBasis(BC knowledge_basis){
+
   if(isEmptyKnowledgeBasis(knowledge_basis)){
-    printf("Base déjà vide");
+    printf("*** Base de connaissance déjà vide ***\n");
   }
   else{
     BC buffer = knowledge_basis;
     while(buffer->next != NULL){
-    	buffer->head.conclusion = NULL;
-      while(buffer->head.premisse->content != NULL){
-        buffer->head.premisse->content = NULL;
-        buffer->head.premisse = buffer->head.premisse->next;
+			buffer->head.conclusion = NULL;
+      while(buffer->head.premisse != NULL){
+				free(buffer->head.premisse->content);
+    	  buffer->head.premisse = buffer->head.premisse->next;
       }
       buffer = buffer->next;
 		}
-    knowledge_basis = buffer;
+
+    knowledge_basis->next = NULL;
+    printf("*** Base de connaissance supprimée ***\n");
   }
 }
