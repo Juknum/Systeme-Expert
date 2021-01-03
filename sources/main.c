@@ -94,12 +94,13 @@ void menu(BC knowledge_basis, BF fact_basis){
 	printf("1. Rechercher une UV\n");
   printf("2. Accéder à la liste complète des UVs\n");
   printf("3. Réinitialiser le système\n");
-  printf("4. Quitter le programme\n\n");
+  printf("4. Ajouter une règle à la base de connaissance\n");
+  printf("5. Quitter le programme\n\n");
   printf("Votre choix : ");
 
   do {
   	scanf("%d", &choix);
-  } while (choix > 4 || choix < 1);
+  } while (choix > 5 || choix < 1);
 
   switch(choix){
     case 1 :
@@ -184,7 +185,87 @@ void menu(BC knowledge_basis, BF fact_basis){
       deleteKnowledgeBasis(knowledge_basis);
 			menu(knowledge_basis, fact_basis);
       break;
-    case 4 :
+    case 4 : 
+      CLEAR;
+
+      Regle ajoutRegle = createRule();
+
+      printf("Ajout d'une règle à la base de connaissance...");
+      printf("Quel est le type d'UV ?\n");
+			printf("L'UV est : 1. CS\n");
+      printf("           2. TM\n");
+			printf("           3. EC\n");
+			printf("           4. QC\n");
+			printf("           5. OM\n");
+      printf("Tapez votre nombre de 1 à 5 pour choisir : ");
+
+      int addType = 0;
+      do {
+        scanf("%d", &addType);
+      }while(addType > 5 || addType < 1);
+
+      switch(addType){
+        case 1 : 
+          ajoutRegle = addProposition(ajoutRegle, "CS");
+          break;
+        case 2 : 
+          ajoutRegle = addProposition(ajoutRegle, "TM");
+          break;
+        case 3 : 
+          ajoutRegle = addProposition(ajoutRegle, "EC");
+          break;
+        case 4 : 
+          ajoutRegle = addProposition(ajoutRegle, "QC");
+          break;
+        case 5 : 
+          ajoutRegle = addProposition(ajoutRegle, "OM");
+          break;
+      }
+
+      printf("Quelle est la matière abordée ?\n");
+      char addMatter[15];
+      scanf("%s", addMatter);
+      char* addPtr = addMatter;
+      ajoutRegle = addProposition(ajoutRegle, addPtr);
+
+      printf("Quelle est le theme abordé ?\n");
+      char addTheme[15];
+      scanf("%s", addTheme);
+      char* addPtr2 = addTheme;
+      ajoutRegle = addProposition(ajoutRegle, addPtr2);
+
+      printf("Quand l'UV est-elle disponible ?\n");
+      printf("1. Automne uniquement\n");
+      printf("2. Printemps uniquement\n");
+      printf("3. Tout semestre\n");
+      printf("Tapez votre nombre de 1 à 3 pour choisir : ");
+
+      int addSemestre = 0;
+      do{
+        scanf("%d", &addSemestre);
+      }while(addSemestre < 1 || addSemestre > 3);
+
+      switch(addSemestre){
+        case 1 :
+          ajoutRegle = addProposition(ajoutRegle, "Automne uniquement");
+        break;
+        case 2 : 
+          ajoutRegle = addProposition(ajoutRegle, "Printemps uniquement");
+        break;
+        case 3 :
+          ajoutRegle = addProposition(ajoutRegle, "Tout semestre");
+      }
+
+      printf("Quelle est la conclusion ?\n");
+      char conclusion[15];
+      scanf("%s", conclusion);
+      char* ptr3 = conclusion;
+      ajoutRegle = createConclusion(ajoutRegle, ptr3);
+
+      knowledge_basis = addRuleBasis(knowledge_basis, ajoutRegle);
+
+      break;
+    case 5 :
       exit(0);
       break;
   }
