@@ -150,7 +150,7 @@ void menu(BC knowledge_basis, BF fact_basis){
       fact_basis = addFactFactBasis(fact_basis, ptr2);
 
       printf("Quand l'UV est-elle disponible ?\n");
-      printf("1.Automne uniquement\n");
+      printf("1. Automne uniquement\n");
       printf("2. Printemps uniquement\n");
       printf("3. Tout semestre\n");
       printf("Tapez votre nombre de 1 à 3 pour choisir : ");
