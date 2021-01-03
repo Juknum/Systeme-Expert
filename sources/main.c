@@ -18,7 +18,7 @@ int main(void){
 
 	Regle Regle1 = createRule();
 	Regle1 = addProposition(Regle1, "CS");
-	Regle1 = addProposition(Regle1, "Mathématiques");
+	Regle1 = addProposition(Regle1, "Mathematiques");
 	Regle1 = addProposition(Regle1, "Statistiques");
 	Regle1 = addProposition(Regle1, "Primtemps uniquement");
 	Regle1 = createConclusion(Regle1, "SQ20");
@@ -150,9 +150,10 @@ void menu(BC knowledge_basis, BF fact_basis){
       fact_basis = addFactFactBasis(fact_basis, ptr2);
 
       printf("Quand l'UV est-elle disponible ?\n");
-      printf("1.Automne uniquement");
-      printf("2. Printemps uniquement");
-      printf("3. Tout semestre");
+      printf("1.Automne uniquement\n");
+      printf("2. Printemps uniquement\n");
+      printf("3. Tout semestre\n");
+      printf("Tapez votre nombre de 1 à 3 pour choisir : ");
 
       int semestre = 0;
       do{
