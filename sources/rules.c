@@ -104,12 +104,13 @@ Premisse deleteProposition(Premisse p, char* text){
 	}
 
 	if (strcmp(p->content, text) == 0) {
-		Premisse result = p->next;
+		Premisse result = deleteProposition(p->next, text);
 		free(p);
 		return result;
 	}
 	else {
-		return deleteProposition(p->next, text);
+		p->next = deleteProposition(p->next, text);
+		return p;
 	}
 }
 
