@@ -1,35 +1,58 @@
 #include "../headers/inference_motor.h"
+#include "../headers/fact_basis.h"
+#include "../headers/knowledge_basis.h"
+#include "../headers/rules.h"
+#include "../headers/colors.h"
 
-void inference_motor(BC knowledge_basis, BF fact_basis){
-	if(isEmptyFactBasis(fact_basis)){
-		printf("La base de fait est vide");
-	}
-	if(isEmptyKnowledgeBasis(knowledge_basis)){
-		printf("La base de connaissance est vide");
+BC search_uv(const BC knowledge_basis, const BF fact_basis) {
+	BC knowledge_buffer = createBasis();
+	BC known_fact       = createBasis();
+	BF fact_buffer      = createFactBasis();
+
+	knowledge_buffer = knowledge_basis;
+	fact_buffer      = fact_basis;
+
+	while (!isEmptyFactBasis(fact_buffer)) {
+		while (!isEmptyKnowledgeBasis(knowledge_buffer)) {
+			Premisse premisse_buffer = knowledge_buffer->next->head.premisse;
+			while (premisse_buffer != NULL) {
+				
+				if (strcmp(premisse_buffer->content, fact_buffer->content) == 0 ) {
+					known_fact = addRuleBasis(known_fact, knowledge_buffer->next->head);
+				}
+				premisse_buffer = premisse_buffer->next;
+			}
+			knowledge_buffer = knowledge_buffer->next;
+    }
+    fact_buffer = fact_buffer->next;
 	}
 
+	return known_fact;
+}
+
+void inference_motor(BC knowledge_basis, BF fact_basis) {
+	if(isEmptyKnowledgeBasis(knowledge_basis)) printf(RED("La base de connaissance est vide\n"));
 	else {
-		bool comp;
-		Premisse buffer = fact_basis;
+		BC knowledge_buffer = createBasis();
+		BF fact_buffer      = createFactBasis();
 
-		while(buffer->next != NULL){
-			buffer = buffer->next;
+		knowledge_buffer    = knowledge_basis;
+		fact_buffer         = fact_basis;
+
+		while(fact_buffer != NULL) {
+			knowledge_buffer = search_uv(knowledge_buffer, fact_buffer);
+			//printf("%s",fact_buffer->content);
+			fact_buffer = fact_buffer->next;
 		}
 
-		do{
-			do{
-        comp = isProposition(knowledge_basis->head.premisse, fact_basis->content);
-				if(comp == true){
-          knowledge_basis->head.premisse = deleteProposition(knowledge_basis->head.premisse, fact_basis->content);
-            if(knowledge_basis->head.premisse == NULL){
-              Premisse new = (Premisse)malloc(sizeof(ElemBC));
-              new->content = knowledge_basis->head.conclusion;
-              buffer->next = new;
-              printf("%s\n", buffer->content);
-            }
-        }
-
-			}while(knowledge_basis != NULL);
-		}while(fact_basis != NULL);
+		if (isEmptyKnowledgeBasis(knowledge_buffer)) {
+			printf(YELLOW("\n==> Aucune UV ne correspond!\n"));
+			displayFactBasis(fact_basis);
+		}
+		else {
+			printf(GREEN("\n==> UV : %s\n\n"),knowledge_buffer->next->head.conclusion);
+			displayKnowledgeBasis(knowledge_buffer);
+			displayFactBasis(fact_basis);
+		}
 	}
 }

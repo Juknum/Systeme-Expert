@@ -1,4 +1,5 @@
 #include "../headers/rules.h"
+#include "../headers/colors.h"
 
 /*------------------------------------*/
 
@@ -25,8 +26,8 @@ bool isEmptyConclusion(Regle r){
 
 Regle createRule(){
 	Regle new;
-		new.premisse = NULL;
-		new.conclusion = NULL;
+	new.premisse = NULL;
+	new.conclusion = NULL;
 	return new;
 }
 
@@ -53,7 +54,7 @@ Regle addProposition(Regle r, char* text){
 		buffer.premisse->next = new;
 	}
 	else {
-		printf("Vous avez déjà mis cette proposition dans cette prémisse");
+		printf(RED("Vous avez déjà mis cette proposition dans cette prémisse"));
 	}
 	return r;
 }
@@ -62,7 +63,7 @@ Regle addProposition(Regle r, char* text){
 
 Regle createConclusion(Regle r, char* content){
 	if(isEmptyPremisse(r.premisse)) {
-		printf("La prémisse de cette règle est vide, impossible de faire un conclusion");
+		printf(RED("La prémisse de cette règle est vide, impossible de faire un conclusion"));
 	}
 	else {
 		r.conclusion = (char *)malloc(strlen(content)+1);
@@ -89,33 +90,18 @@ bool isProposition(Premisse p, char* content){
 
 /*------------------------------------*/
 
-Premisse deleteProposition(Premisse p, char* proposition){
-	if(isEmptyPremisse(p)){
-		return p;
+Premisse deleteProposition(Premisse p, char* text){
+	if (p == NULL) return NULL;
+	if (p->next == NULL) return p;
+
+	if (strcmp(p->content, text) == 0) {
+		Premisse result = deleteProposition(p->next, text);
+		free(p);
+		return result;
 	}
-	else if(strcmp(p->content, proposition)){
-		if(isEmptyPremisse(p->next) == true){
-			return NULL;
-		}
-		else{
-			Premisse buffer = p->next;
-			free(p->content);
-			free(p);
-			p = buffer;
-			return p;
-		}
-	}
-	else if(isEmptyPremisse(p->next)){
+	else {
+		p->next = deleteProposition(p->next, text);
 		return p;
-	}
-	else if(strcmp(p->next->content, proposition)){
-		Premisse buffer = p->next->next;
-		free(p->next->content);
-		free(p->next);
-		p->next = buffer;
-		return p;
-	}else{
-		return deleteProposition(p->next, proposition);
 	}
 }
 
@@ -145,15 +131,14 @@ char* valueConclusion(Regle r){
 
 void displayRule(Regle r){
 	if(isEmptyRule(r)){
-		printf("*** La règle est vide ***\n");
+		printf(RED("La règle est vide\n"));
 	}
 	else{
-		//printf("*** Règle ***\n");
 		Regle buffer = r;
 		while(buffer.premisse != NULL){
-			printf("- %s\n",buffer.premisse->content);
+			printf(BLUE("-")" %s\n",buffer.premisse->content);
 			buffer.premisse = buffer.premisse->next;
 		}
-		printf("= %s\n\n",r.conclusion);
+		printf(CYAN("=>")" %s\n\n",r.conclusion);
 	}
 }

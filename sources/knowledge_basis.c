@@ -1,9 +1,12 @@
 #include "../headers/knowledge_basis.h"
+#include "../headers/colors.h"
 
 /*------------------------------------*/
 
 BC createBasis(){
 	BC new = (BC)malloc(sizeof(ElemBC));
+	new->head.premisse = NULL;
+	new->next = NULL;
 	return new;
 }
 
@@ -46,17 +49,17 @@ bool isEmptyKnowledgeBasis(BC knowledge_basis){
 
 void displayKnowledgeBasis(BC knowledge_basis){
 	if(isEmptyKnowledgeBasis(knowledge_basis)){
-		printf("*** Base de connaissance vide ***\n");
+		printf(RED("Base de connaissance vide\n"));
 	}
 	else{
 		BC buffer = knowledge_basis;
 		buffer = buffer->next;
-		printf("*** Voici la base de connaissance ***\n");
+		printf(BLUE("----------------- BASE DE CONNAISSANCE ----------------\n\n"));
 		while(buffer != NULL){
 			displayRule(headValueBasis(buffer));
 			buffer = buffer->next;
 		}
-		printf("*** Fin de la base de connaissance ***\n");
+		printf(BLUE("-------------------------------------------------------\n\n"));
 	}
 }
 
@@ -65,7 +68,7 @@ void displayKnowledgeBasis(BC knowledge_basis){
 void deleteKnowledgeBasis(BC knowledge_basis){
 
   if(isEmptyKnowledgeBasis(knowledge_basis)){
-    printf("*** Base de connaissance déjà vide ***\n");
+    printf(RED("Base de connaissance déjà vide\n"));
   }
   else{
     BC buffer = knowledge_basis;
@@ -79,6 +82,6 @@ void deleteKnowledgeBasis(BC knowledge_basis){
 		}
 
     knowledge_basis->next = NULL;
-    printf("*** Base de connaissance supprimée ***\n");
+    printf(GREEN("Base de connaissance supprimée\n"));
   }
 }

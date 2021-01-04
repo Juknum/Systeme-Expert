@@ -97,10 +97,10 @@ bool isProposition(Premisse p, char* content);
  * @brief fonction de suppression de proposition dans une prémisse
  * 
  * @param p variable de type prémisse contenant la proposition
- * @param proposition chaine de caractère contenant la porposition à supprimer de la prémisse
+ * @param text chaine de caractère contenant la porposition à supprimer de la prémisse
  * @return prémisse de la regle mise à jour
  */
-Premisse deleteProposition(Premisse p, char* proposition);
+Premisse deleteProposition(Premisse p, char* text);
 
 /****************************************
  * @brief fonction indiquant la valeur de la tête de la prémisse d'une règle
