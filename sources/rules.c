@@ -95,8 +95,7 @@ Premisse deleteProposition(Premisse p, char* text){
 	if (p->next == NULL){
 		if(strcmp(p->content, text) == 0){
 			free(p->content);
-			free(p);
-			return NULL;
+			return p;
 		} 
 		else {
 			return p;

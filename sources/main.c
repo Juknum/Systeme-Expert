@@ -61,6 +61,7 @@ int main(void){
 	Regle7 = addProposition(Regle7, "Automne");
 	Regle7 = createConclusion(Regle7, "IFA");
 
+
 	// Création de la base de connaissance & ajout des règles dedans
 	BC knowledge_basis = createBasis();
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle1);
@@ -70,6 +71,7 @@ int main(void){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle5);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle6);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle7);
+
 
 	// Création d'une base de fait vide
 	BF fact_basis = createFactBasis();
