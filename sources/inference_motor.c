@@ -47,12 +47,12 @@ void inference_motor(BC knowledge_basis, BF fact_basis) {
 
 		if (isEmptyKnowledgeBasis(knowledge_buffer)) {
 			printf(YELLOW("\n==> Aucune UV ne correspond!\n"));
-			displayFactBasis(fact_basis);
+			//displayFactBasis(fact_basis); //Test
 		}
 		else {
 			printf(GREEN("\n==> UV : %s\n\n"),knowledge_buffer->next->head.conclusion);
-			displayKnowledgeBasis(knowledge_buffer);
-			displayFactBasis(fact_basis);
+			//displayKnowledgeBasis(knowledge_buffer); //Test
+			//displayFactBasis(fact_basis); //Test
 		}
 	}
 }

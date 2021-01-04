@@ -112,7 +112,7 @@ void menu(BC knowledge_basis, BF fact_basis){
       printf(MAGENTA("Thème : "));
       fact_basis = addFactFactBasis(fact_basis, entry_char());
 
-      printf("Quand l'UV est-elle disponible ?\n");
+      printf(MAGENTA("Quand l'UV est-elle disponible ?\n"));
       printf(BLUE("1.")" Automne\n");
       printf(BLUE("2.")" Printemps\n");
       printf(BLUE("3.")" Les deux\n");
