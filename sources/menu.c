@@ -8,6 +8,7 @@
 
 long entry_num() {
 	char entry[MAX_LENGTH];
+	// get a user entry & return 0 if NaN
 	fgets(entry, MAX_LENGTH+1, stdin);
 	return strtol(entry, NULL, 10);
 }
@@ -22,12 +23,14 @@ char* entry_char() {
 	// remove \n char
 	entry[strlen(entry) - 1] = 0;
 
-	// adjust size to the string
+	// adjust size to the string itself
 	char* result = (char*)malloc(strlen(entry)+1);
 	strcpy(result, entry);
 
 	return result;
 }
+
+/*---------------------------------------------------------*/
 
 void header() {
 	printf(YELLOW(".o. .o.")CYAN("    ooooo     ooo oooooo     oooo             ")YELLOW(".o. .o.")"\n");
@@ -61,12 +64,14 @@ void menu(BC knowledge_basis, BF fact_basis){
 			CLEAR;
 			header();
 
+			// On évite toute intéraction si la bc est vide : on ne cherche pas dans du "vide"
 			if (isEmptyKnowledgeBasis(knowledge_basis)) {
 				printf(RED("La base de connaissance est vide!\n"));
 				menu(knowledge_basis, fact_basis);
 				break;
 			}
 
+			// On supprime la base de fait ssi elle est remplie
 			if (!isEmptyFactBasis(fact_basis)) deleteFactBasis(fact_basis);
       
 			printf("Quel est le type de l'UV ?\n");
@@ -149,6 +154,7 @@ void menu(BC knowledge_basis, BF fact_basis){
       CLEAR;
 			header();
 
+			// Création de la nouvelle règle
       Regle ajoutRegle = createRule();
 
       printf(GREEN("Ajout d'une règle à la base de connaissance\n\n"));
@@ -182,9 +188,11 @@ void menu(BC knowledge_basis, BF fact_basis){
           break;
       }
 
+			// Ajout de la matière
       printf(MAGENTA("Matière : "));
       ajoutRegle = addProposition(ajoutRegle, entry_char());
 
+			// Ajout du thème
       printf(MAGENTA("Thème : "));
       ajoutRegle = addProposition(ajoutRegle, entry_char());
 
@@ -209,13 +217,12 @@ void menu(BC knowledge_basis, BF fact_basis){
           ajoutRegle = addProposition(ajoutRegle, "Les deux");
       }
 
+			// Ajout de la conclusion
       printf(MAGENTA("Quelle est le nom de l'uv : "));
       ajoutRegle = createConclusion(ajoutRegle, entry_char());
-
       knowledge_basis = addRuleBasis(knowledge_basis, ajoutRegle);
 
       menu(knowledge_basis, fact_basis);
-
       break;
     case 5 :
 			CLEAR;

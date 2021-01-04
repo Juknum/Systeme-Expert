@@ -50,6 +50,7 @@ void deleteFactBasis(BF fact_basis){
 		printf(RED("Base de fait déjà vide\n"));
 	}
 	else{
+		printf(RED("NON FINI : la base de fait doit être vidée <!> see fact_basis.c line 53\n"));
 	/*
 		BF buffer = fact_basis;
 		BF buffer_of_buffer = NULL;

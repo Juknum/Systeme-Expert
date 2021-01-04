@@ -11,6 +11,7 @@ int main(void){
 	// Utilisé pour l'interprétation des accents, etc.. sous windows
 	ASCII;
 
+	// Création des règles et de leurs prémisses & conclusion
 	Regle Regle1 = createRule();
 	Regle1 = addProposition(Regle1, "CS");
 	Regle1 = addProposition(Regle1, "Mathematiques");
@@ -60,7 +61,7 @@ int main(void){
 	Regle7 = addProposition(Regle7, "Automne");
 	Regle7 = createConclusion(Regle7, "IFA");
 
-	//Création de la base de connaissance
+	// Création de la base de connaissance & ajout des règles dedans
 	BC knowledge_basis = createBasis();
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle1);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle2);
@@ -70,8 +71,10 @@ int main(void){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle6);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle7);
 
+	// Création d'une base de fait vide
 	BF fact_basis = createFactBasis();
 
+	// Mettre sous commentaire pour laisser les informations du compilateurs <!>
 	//CLEAR;
 	
 	header();

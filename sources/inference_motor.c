@@ -41,7 +41,7 @@ void inference_motor(BC knowledge_basis, BF fact_basis) {
 
 		while(fact_buffer != NULL) {
 			knowledge_buffer = search_uv(knowledge_buffer, fact_buffer);
-			//printf("%s",fact_buffer->content);
+			//printf("%s",fact_buffer->content); //DEBUG
 			fact_buffer = fact_buffer->next;
 		}
 
