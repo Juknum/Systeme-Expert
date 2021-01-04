@@ -151,29 +151,26 @@ Données : Premisse p
 			string proposition
 Résultat : Premisse p
 Debut
-	si est_vide_premisse(p) est VRAI alors
-		retourner p
-	sinon si contenu(p) = proposition alors
-		si est_vide_premisse(suiv(p)) est VRAI alors
+	si p est inédini alors
+		retourner indéfini
+	si suiv(p) est indéfini alors
+		si contenu(p) = proposition alors
+			libérer(contenu(p))
+			libérer(p)
 			retourner indéfini
 		sinon
-			Premisse tampon = suiv(p)
-			liberer(p)
-			p = tampon
-			retouner p
-	sinon si est_vide_premisse(suiv(p)) est VRAI alors
-		retourner p
-	sinon si contenu(suiv(p)) = proposition alors
-		Premisse taampon = suiv(suiv(p))
-		liberer(suiv(p))
-		suiv(p) = tampon
-		return p
+			retourner p
+	si contenu(p) = proposition alors
+		Premisse résultat = retirer_proposition(suiv(p), proposition)
+		libérer(p)
+		retourner résultat
 	sinon
-		retouner retirer_proposition(suiv(p), proposition)
+		suiv(p) = retirer_proposition(suiv(p), proposition)
+		retourner p
 Fin 
 ```
-> On teste si la prémisse est vide. Si c'est le cas, on retourne la prémisse inchangé (on ne peut rien supprimer). Sinon, on étudie le cas où la proposition est en tête de prémisse. Si c'est le cas et que la prémisse ne contient pas d'autre élément, on retourne indéfini. Si elle en contient d'autres, on se sert d'une prémisse tampon pour supprimer l'élément de tête.
-> Dans le cas où la proposition n'est pas en tête de prémisse, on vérifie si la prémisse contient plus d'une proposition, si ce n'est pas le cas, on retourne p inchangée (on ne peut rien supprimer). Sinon, (à finir structure de l'algo discutable)
+> Si p est vide, on retourne indéfini. Si suiv(p) est indéfini et si le seul élément de p est le même que la proposition alorslibérer p et retourner indéfini, sinon retourner p.
+> (Si p et suiv(p) sont définis) Si contenu(p) = proposition alors on retourne une prémisse "résultat" qui vaut suiv(p). Sinon on retourne retirer_proposition pour l'élément suivant de p.
 
 
 **Accès à l'élément de tête d'une prémisse**

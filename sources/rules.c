@@ -92,16 +92,24 @@ bool isProposition(Premisse p, char* content){
 
 Premisse deleteProposition(Premisse p, char* text){
 	if (p == NULL) return NULL;
-	if (p->next == NULL) return p;
+	if (p->next == NULL){
+		if(strcmp(p->content, text) == 0){
+			free(p->content);
+			free(p);
+			return NULL;
+		} 
+		else {
+			return p;
+		}
+	}
 
 	if (strcmp(p->content, text) == 0) {
-		Premisse result = deleteProposition(p->next, text);
+		Premisse result = p->next;
 		free(p);
 		return result;
 	}
 	else {
-		p->next = deleteProposition(p->next, text);
-		return p;
+		return deleteProposition(p->next, text);
 	}
 }
 
