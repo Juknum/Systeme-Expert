@@ -45,13 +45,4 @@ void displayFactBasis(BF fact_basis);
  */
 BF addFactFactBasis(BF fact_basis, char* content);
 
-
-/*****************************
- * @brief fonction de suppression de base de fait
- * 
- * @param fact_basis variable de type BF que l'on va supprimer
- * @return pas de return
- */
-void deleteFactBasis(BF fact_basis);
-
 #endif

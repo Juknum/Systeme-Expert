@@ -45,7 +45,7 @@ void header() {
 
 /*---------------------------------------------------------*/
 
-void menu(BC knowledge_basis, BF fact_basis){
+void menu(BC knowledge_basis){
 	long int numeric;
 
 	printf("\n");
@@ -64,15 +64,14 @@ void menu(BC knowledge_basis, BF fact_basis){
 			CLEAR;
 			header();
 
+      BF fact_basis = createFactBasis();
+
 			// On évite toute intéraction si la bc est vide : on ne cherche pas dans du "vide"
 			if (isEmptyKnowledgeBasis(knowledge_basis)) {
 				printf(RED("La base de connaissance est vide!\n"));
-				menu(knowledge_basis, fact_basis);
+				menu(knowledge_basis);
 				break;
 			}
-
-			// On supprime la base de fait ssi elle est remplie
-			if (!isEmptyFactBasis(fact_basis)) deleteFactBasis(fact_basis);
       
 			printf("Quel est le type de l'UV ?\n");
 			printf(BLUE("1.")" CS\n");
@@ -134,21 +133,20 @@ void menu(BC knowledge_basis, BF fact_basis){
       }
 
       inference_motor(knowledge_basis, fact_basis);
-			menu(knowledge_basis, fact_basis);
+			menu(knowledge_basis);
       break;
     case 2 :
 			CLEAR;
 			header();
       printf(GREEN("Voici la liste des UV et leurs caractéristiques\n\n"));
       displayKnowledgeBasis(knowledge_basis);
-			menu(knowledge_basis, fact_basis);
+			menu(knowledge_basis);
       break;
     case 3 :
 			CLEAR;
 			header();
-      deleteFactBasis(fact_basis);
       deleteKnowledgeBasis(knowledge_basis);
-			menu(knowledge_basis, fact_basis);
+			menu(knowledge_basis);
       break;
     case 4 : 
       CLEAR;
@@ -222,7 +220,7 @@ void menu(BC knowledge_basis, BF fact_basis){
       ajoutRegle = createConclusion(ajoutRegle, entry_char());
       knowledge_basis = addRuleBasis(knowledge_basis, ajoutRegle);
 
-      menu(knowledge_basis, fact_basis);
+      menu(knowledge_basis);
       break;
     case 5 :
 			CLEAR;

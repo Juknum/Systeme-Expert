@@ -44,34 +44,3 @@ BF addFactFactBasis(BF fact_basis, char* content){
 	}
 	return fact_basis;
 }
-
-void deleteFactBasis(BF fact_basis){
-	if(isEmptyFactBasis(fact_basis)){
-		printf(RED("Base de fait déjà vide\n"));
-	}
-	else{
-		BF buffer = fact_basis;
-		while(!isEmptyFactBasis(buffer->next)){
-			free(buffer->content);
-			free(buffer);
-			buffer = buffer->next;
-		}
-
-		printf("***Base de fait supprimée***\n");
-
-
-
-
-	/*
-		BF buffer = fact_basis;
-		BF buffer_of_buffer = NULL;
-		while(isEmptyFactBasis(buffer) == false){
-			buffer_of_buffer = buffer->next;
-			free(buffer);
-			free(buffer->content);
-			buffer = buffer_of_buffer;
-		}
-		printf("*** Base de fait supprimée ***\n");
-	*/
-	}
-}

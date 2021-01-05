@@ -14,7 +14,7 @@
  * @param fact_basis base de fait de l'utilisateur
  * @return pas de return
  */
-void menu(BC knowledge_basis, BF fact_basis);
+void menu(BC knowledge_basis);
 
 /********************************
  * @brief affiche l'entête du programme

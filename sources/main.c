@@ -72,16 +72,12 @@ int main(void){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle6);
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle7);
 
-
-	// Création d'une base de fait vide
-	BF fact_basis = createFactBasis();
-
 	// Mettre sous commentaire pour laisser les informations du compilateurs <!>
 	//CLEAR;
 	
 	header();
 	printf("Bienvenue, que souhaitez-vous faire ?\n");
-	menu(knowledge_basis, fact_basis);
+	menu(knowledge_basis);
   
 	return 0;
 }
