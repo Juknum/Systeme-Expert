@@ -1,6 +1,8 @@
-<p style="text-align:center;" style = "font-size:30px;">
+<div style="text-align:center;">
+    <p style = "font-size:30px;">
 	Rapport de projet LO21 : Système expert
-</p>
+	</p>
+</div>
 
 <p style="font-size:10px;">
 	Membres du binôme : Constant Julien et Echard Noé
