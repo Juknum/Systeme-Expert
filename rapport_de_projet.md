@@ -62,6 +62,9 @@ typedef Proposition* BF;
 ```
 ![](https://imgur.com/U7Uho44.png)
 >On peut représenter le type base de connaissance comme ceci avec une classification en groupes emboités.
+ 
+
+
 
 ## 2. Algorithmes des sous-programmes
 ### 1. Liste des sous-programmes des règles
