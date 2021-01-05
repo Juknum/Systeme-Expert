@@ -1,4 +1,4 @@
-<p text-align="center" style = "font-size:30px;">
+<p style="text-align:center;" style = "font-size:30px;">
 	Rapport de projet LO21 : Système expert
 </p>
 
@@ -301,9 +301,6 @@ Fin
 Pour le jeu d'essai, nous avons choisi de faire un guide des UV. 
 L'idée est de pouvoir rechercher une UV à partir de plusieurs propositions (comme sa catégorie (CS, TM, etc), son type (Maths, physique, électricité), un thème particulier ou encore les semestres où l'on peut l'étudier (automne, printemps, oul les deux)). Le système peut aussi faire une recherche dans l'autre sens : on lui donne une UV, et il nous renvoie ses caractéristiques. 
 
-:bulb: Images à insérer pour illustrer le travail
-
-> partie à revoir pour plus de contenu
 
 ## 4. Commentaires
 
