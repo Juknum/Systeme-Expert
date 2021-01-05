@@ -26,7 +26,7 @@ Le sujet de notre projet de LO21 porte sur un "système expert". Un système exp
  
 Pour faire cela, nous avons défini trois types "principaux" de variables. Le type "Regle" est composé de deux types de variables "annexes" : le type conclusion qui est une chaine de caractère et le type prémisse qui est une liste chainée. Le type "BF" (base de fait) est une liste chainée. Enfin, le type "BC" (base de connaissance) est une liste de Regle.
 
-##### Déclaration du type proposition et du type règle en détail :
+#### Déclaration du type proposition et du type règle en détail :
 ```C
 typedef struct proposition {
 	char* content;
