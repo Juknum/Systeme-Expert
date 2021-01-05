@@ -19,9 +19,34 @@
 
 ## 1. Nos choix de conception d'implémentation et la démarche adoptée
 
-> Test pour l'Image
+Le sujet de notre projet de LO21 porte sur un "système expert". Un système expert est composé de trois partie : 
+- Une base de connaissance : elle est composée d'une liste de règle.
+- Une base de fait : une liste de proposition considérée comme vraie 
+- Un moteur d'inférence qui permet de déduire une conclusion vraie en comparant la base de fait avec les règles de la base de connaissance.
+ 
+Pour faire cela, nous avons défini trois types "principaux" de variables. Le type "Regle" est composé de deux types de variables "annexes" : le type conclusion qui est une chaine de caractère et le type prémisse qui est une liste chainée. Le type "BF" (base de fait) est une liste chainée. Enfin, le type "BC" (base de connaissance) est une liste de Regle.
 
-![permalink setting demo](https://imgur.com/a/eV1E42m)
+####Déclaration du type proposition et du type règle en détail :
+```C
+typedef struct proposition {
+	char* content;
+	struct proposition* next;
+} Proposition;
+
+typedef Proposition* Premisse;
+typedef char* Conclusion;
+
+typedef struct regle {
+	Premisse premisse;
+	Conclusion conclusion;
+} Regle;
+```
+ 
+![](https://imgur.com/88mnAI2.png)
+>Classification en groupes emboités du type base de connaissance
+
+![](URL à mettre diagramme BF)
+>Classification en groupes emboités du type base de fait 
 
 ## 2. Algorithmes des sous-programmes
 ### 1. Liste des sous-programmes des règles
