@@ -63,7 +63,7 @@ typedef Proposition* BF;
 ![](https://imgur.com/U7Uho44.png)
 >On peut représenter le type base de connaissance comme ceci avec une classification en groupes emboités.
  
-
+---
 
 
 ## 2. Algorithmes des sous-programmes
@@ -298,7 +298,8 @@ Fin
 
 ## 3. Jeu d'essai
 
-Pour le jeu d'essai, nous avons choisi de faire un guide des UV. L'idée est de pouvoir rechercher une UV à partir de plusieurs propositions (comme sa catégorie (CS, TM, etc), son type (Maths, physique, électricité), un thème particulier ou encore les semestres où l'on peut l'étudier (automne, printemps, oul les deux)). Le système peut aussi faire une recherche dans l'autre sens : on lui donne une UV, et il nous renvoie ses caractéristiques. 
+Pour le jeu d'essai, nous avons choisi de faire un guide des UV. 
+L'idée est de pouvoir rechercher une UV à partir de plusieurs propositions (comme sa catégorie (CS, TM, etc), son type (Maths, physique, électricité), un thème particulier ou encore les semestres où l'on peut l'étudier (automne, printemps, oul les deux)). Le système peut aussi faire une recherche dans l'autre sens : on lui donne une UV, et il nous renvoie ses caractéristiques. 
 
 :bulb: Images à insérer pour illustrer le travail
 
