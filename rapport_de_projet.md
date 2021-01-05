@@ -19,7 +19,9 @@
 
 ## 1. Nos choix de conception d'implémentation et la démarche adoptée
 
-> partie à faire
+> Test pour l'Image
+
+![permalink setting demo](https://imgur.com/a/eV1E42m)
 
 ## 2. Algorithmes des sous-programmes
 ### 1. Liste des sous-programmes des règles
