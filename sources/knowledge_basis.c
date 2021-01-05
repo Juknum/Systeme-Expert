@@ -67,21 +67,21 @@ void displayKnowledgeBasis(BC knowledge_basis){
 
 void deleteKnowledgeBasis(BC knowledge_basis){
 
-  if(isEmptyKnowledgeBasis(knowledge_basis)){
-    printf(RED("Base de connaissance déjà vide\n"));
-  }
-  else{
-    BC buffer = knowledge_basis;
-    while(buffer->next != NULL){
-			buffer->head.conclusion = NULL;
-      while(buffer->head.premisse != NULL){
+	if(isEmptyKnowledgeBasis(knowledge_basis)){
+		printf(RED("Base de connaissance déjà vide\n"));
+	}
+	else{
+		BC buffer = knowledge_basis;
+		while(buffer->next != NULL){
+				buffer->head.conclusion = NULL;
+			while(buffer->head.premisse != NULL){
 				free(buffer->head.premisse->content);
-    	  buffer->head.premisse = buffer->head.premisse->next;
-      }
-      buffer = buffer->next;
-		}
+				buffer->head.premisse = buffer->head.premisse->next;
+			}
+			buffer = buffer->next;
+			}
 
-    knowledge_basis->next = NULL;
-    printf(GREEN("Base de connaissance supprimée\n"));
-  }
+		knowledge_basis->next = NULL;
+		printf(GREEN("Base de connaissance supprimée\n"));
+	}
 }
