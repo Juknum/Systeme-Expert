@@ -42,11 +42,26 @@ typedef struct regle {
 } Regle;
 ```
  
-![](https://imgur.com/88mnAI2.png)
->Classification en groupes emboités du type base de connaissance
 
+#### Déclaration du type BC (base de connaissance) en détail : 
+```C 
+typedef struct BC{
+    Regle head;
+    struct BC* next;
+}ElemBC;
+
+typedef ElemBC* BC;
+```
+![](https://imgur.com/88mnAI2.png)
+>On peut représenter le type base de connaissance comme ceci avec une classification en groupes emboités.
+
+
+#### Déclaration du type BF (base de fait) en détail : 
+```C 
+typedef Proposition* BF;
+```
 ![](URL à mettre diagramme BF)
->Classification en groupes emboités du type base de fait 
+>On peut représenter le type base de connaissance comme ceci avec une classification en groupes emboités.
 
 ## 2. Algorithmes des sous-programmes
 ### 1. Liste des sous-programmes des règles
