@@ -60,7 +60,7 @@ typedef ElemBC* BC;
 ```C 
 typedef Proposition* BF;
 ```
-![](URL à mettre diagramme BF)
+![](https://imgur.com/U7Uho44.png)
 >On peut représenter le type base de connaissance comme ceci avec une classification en groupes emboités.
 
 ## 2. Algorithmes des sous-programmes
