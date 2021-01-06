@@ -333,7 +333,7 @@ Début
 Fin
 ```
 
-> Explications de la fonction
+> On crée des variables tampons. Tant que la base de fait tampon n'est pas vide, 
 
 **Moteur d'inférence**
 ```pseudocode
@@ -342,9 +342,29 @@ Données : BC knowledge_basis
           BF fact_basis
 Résultat : pas de résultat renvoyé
 Début
+	Si est_vide(knowledge_basis) est VRAI alors
+		afficher("Base de connaissance vide, on ne peut rien déduire")
+	sinon
+		BC knowledge_buffer = créerBaseVide()
+		BF fact_buffer = créerListe()
 
+		knowledge_buffer = knowledge_basis
+		fact_buffer = fact_basis
+		
+		tant que fact_buffer != indéfini faire 
+			knowledge_buffer = rechercherUV(knowledge_buffer, fact_buffer)
+			fact_buffer = suiv(fact_buffer)
+		fin tant que
+
+		Si est_vide(knowledge_buffer) est VRAI alors
+			afficher("Aucune UV ne correspond")
+		sinon
+			afficher(conclusion(tete(suiv(knowledge_buffer))))
+		fin si
+	Fin si
 Fin
 ```
+>Si la base de connaissance est vide, alors on indique que l'on ne peut rien faire. Sinon, avec l'aide de variables tampons, tant que la base de fait tampon est définie, on applique rechercherUV à la base de connaissance tampon, puis on pointe ***suiv(fact_buffer)*** sur ***fact_buffer***. Une fois la boucle finie, si la base de connaissance tampon est vide, on indique que l'on a rien trouvé, sinon on indique ce que l'on a trouvé.
 
 
 ## 3. Jeu d'essai
