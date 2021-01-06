@@ -11,15 +11,16 @@
 ---
 
 ## Table des matières :
-1. [Nos choix de conception d'implémentation et la démarche adoptée](#Paragraphe1)
+1. [Nos choix de conception, d'implémentation et la démarche adoptée](#Paragraphe1)
 2. [Algorithmes des sous-programmes](#Paragraphe2)
 	1. [Algorithmes des règles](#SousParagraphe1)
 	2. [Algorithmes de la base de connaissance](#SousParagraphe2)
+  3. [Algorithmes du moteur d'inférence](#SousParagraphe3)
 3. [Jeu d'essai](#Paragraphe3)
 4. [Commentaires](#Paragraphe4)
 
 
-## 1. Nos choix de conception d'implémentation et la démarche adoptée
+## 1. Nos choix de conception, d'implémentation et la démarche adoptée
 
 Le sujet de notre projet de LO21 porte sur un "système expert". Un système expert est composé de trois partie : 
 - Une base de connaissance : elle est composée d'une liste de règle.
@@ -269,34 +270,82 @@ Fin
 ```pseudocode
 Fonction ajouterRegleBase
 Données : BC knowledge_basis
-				 Regle r
+				  Regle r
 Résultat : BC knowledge_basis
 Debut
-		si knowledge_basis est indéfini alors
-				knowledge_basis = r
-		sinon
-				BC tampon = knowledge_basis
-				tant que tampon != indéfini
-						tampon <- suiv(tampon)
-				fin tant que
-				créerBaseVide(tampon2)
-				element_tete(tampon2) = r
-				suiv(tampon) = tampon2
-		fin  si 
+	si knowledge_basis est indéfini alors
+			knowledge_basis = r
+	sinon
+			BC tampon = knowledge_basis
+			tant que tampon != indéfini
+					tampon <- suiv(tampon)
+			fin tant que
+			créerBaseVide(tampon2)
+			element_tete(tampon2) = r
+			suiv(tampon) = tampon2
+	fin  si 
 Fin
 ```
 > On teste si la base est vide. Si c'est le cas, on copie simplement la règle de la base de connaissance. Sinon, on parcourt la base à l'aide d'une base tampon, puis à l'aide d'un autre tampon on met la règle en queue de la première base tampon. 
 
 **Acceder à la valeur de tête de la base de connaissance**
 ```pseudocode
-Fonction headValueBasis
+Fonction valeurTeteBase
 Données : BC konwledge_basis
 Résultat : variable de type Regle 
 Debut
-		return valeur_tete(knowledge_basis)
+	return valeur_tete(knowledge_basis)
 Fin
 ```
 > On retourne la regle en tête de la base de connaissance.
+
+### 3. Liste des sous-programmes du moteur d'inférence
+
+**Rechercher une UV**
+```pseudocode
+Fonction rechercherUV
+Données : BC knowledge_basis
+          BF fact_basis
+Résultat : BC known_fact
+Début
+  BC knowldge_buffer = créerBaseVide()
+  BC know_fact = créerBaseVide()
+  BF fact_buffer = créerListe()
+
+  knowledge_buffer = knowledge_basis
+  fact_buffer = fact_basis
+
+  tant que est_vide(fact_buffer) est FAUX faire
+    tant que est_vide(knowldge_buffer) est FAUX faire
+      Premisse premisse_buffer = premisse(tete(suiv(knowledge_buffer)))
+      tant que premisse_buffer != indéfini
+        si contenu(premisse_buffer) = contenu(fact_buffer) alors
+          known_fact = ajouterRegleBase(know_fact, tete(suiv(knowledge_buffer))
+        fin si
+        premisse_buffer = suiv(premisse_buffer)
+      fin tant que
+    knowldge_buffer = suiv(knowldge_buffer)
+    fin tant que
+    fact_buffer = suiv(fact_buffer)
+  fin tant que
+  retourner know_fact
+
+Fin
+```
+
+> Explications de la fonction
+
+**Moteur d'inférence**
+```pseudocode
+Fonction moteurInference
+Données : BC knowledge_basis
+          BF fact_basis
+Résultat : pas de résultat renvoyé
+Début
+
+Fin
+```
+
 
 ## 3. Jeu d'essai
 
