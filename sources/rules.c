@@ -34,15 +34,18 @@ Regle createRule(){
 /*------------------------------------*/
 
 Regle addProposition(Regle r, char* text){
+	// si aucune règle n'est présente
 	if(isEmptyRule(r)){
 		r.premisse = (Premisse)malloc(sizeof(Proposition));
 		r.premisse->content = malloc(strlen(text));
 		strcpy(r.premisse->content, text);
 		r.premisse->next = NULL;
 	}
+	// s'il y a déjà de règles et qu'elle n'en fait pas partie
 	else if(isProposition(r.premisse, text) == false){
 		Regle buffer = r;
 
+		// on boucle jusqu'à la dernière déjà présente
 		while(!isEmptyPremisse(buffer.premisse->next)){
 			buffer.premisse = buffer.premisse->next;
 		}

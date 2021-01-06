@@ -42,10 +42,10 @@ On considère une règle comme une liste de proposition, dont le dernier éléme
 ## 3. Rapport
 
 Le rapport devra contenir les éléments suivants :
-- [ ] Description des choix de conception et d'implémentation relatifs aux structures de données utilisées et à la démarche adoptée.
+- [x] Description des choix de conception et d'implémentation relatifs aux structures de données utilisées et à la démarche adoptée.
 - [x] Algorithmes des sous programmes (en utilisant des opérations abstraites) et leurs explications.
-- [ ] Jeux d'essais.
-- [ ] Commentaires sur les résultats.
+- [x] Jeux d'essais.
+- [x] Commentaires sur les résultats.
 
 **Le rapport ne devra pas contenir de listing du programme C.**
 

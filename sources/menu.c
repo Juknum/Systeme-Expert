@@ -51,7 +51,7 @@ void menu(BC knowledge_basis){
 	printf("\n");
 	printf(BLUE("1.")" Rechercher une UV\n");
   printf(BLUE("2.")" Accéder à la liste complète des UVs\n");
-  printf(BLUE("3.")" Réinitialiser le système\n");
+  printf(BLUE("3.")" Supprimer la base de connaissance\n");
   printf(BLUE("4.")" Ajouter une règle à la base de connaissance\n");
   printf(BLUE("5.")" Quitter le programme\n\n");
   do {
@@ -61,6 +61,9 @@ void menu(BC knowledge_basis){
 
   switch(numeric){
     case 1 :
+			/*
+			 * RECHERCHE D'UVs
+			*/
 			CLEAR;
 			header();
 
@@ -136,6 +139,9 @@ void menu(BC knowledge_basis){
 			menu(knowledge_basis);
       break;
     case 2 :
+			/*
+			 * AFFICHAGE DE LA BASE DE CONNAISSANCE
+			*/
 			CLEAR;
 			header();
       printf(GREEN("Voici la liste des UV et leurs caractéristiques\n\n"));
@@ -143,12 +149,18 @@ void menu(BC knowledge_basis){
 			menu(knowledge_basis);
       break;
     case 3 :
+			/*
+			 * SUPPRESSION DE LA BASE DE CONNAISSANCE
+			*/
 			CLEAR;
 			header();
       deleteKnowledgeBasis(knowledge_basis);
 			menu(knowledge_basis);
       break;
     case 4 : 
+			/*
+			 * AJOUT D'UNE REGLE A DE LA BASE DE CONNAISSANCE
+			*/
       CLEAR;
 			header();
 
@@ -223,6 +235,9 @@ void menu(BC knowledge_basis){
       menu(knowledge_basis);
       break;
     case 5 :
+			/*
+			 * FERMER LE PROGRAMME
+			*/
 			CLEAR;
 			header();
 			printf("Au revoir et à bientôt!\n");

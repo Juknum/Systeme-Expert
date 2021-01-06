@@ -41,18 +41,14 @@ void inference_motor(BC knowledge_basis, BF fact_basis) {
 
 		while(fact_buffer != NULL) {
 			knowledge_buffer = search_uv(knowledge_buffer, fact_buffer);
-			//printf("%s",fact_buffer->content); //DEBUG
 			fact_buffer = fact_buffer->next;
 		}
 
 		if (isEmptyKnowledgeBasis(knowledge_buffer)) {
 			printf(YELLOW("\n==> Aucune UV ne correspond!\n"));
-			//displayFactBasis(fact_basis); //Test
 		}
 		else {
 			printf(GREEN("\n==> UV : %s\n\n"),knowledge_buffer->next->head.conclusion);
-			//displayKnowledgeBasis(knowledge_buffer); //Test
-			//displayFactBasis(fact_basis); //Test
 		}
 	}
 }

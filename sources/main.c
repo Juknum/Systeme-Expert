@@ -73,7 +73,7 @@ int main(void){
 	knowledge_basis = addRuleBasis(knowledge_basis, Regle7);
 
 	// Mettre sous commentaire pour laisser les informations du compilateurs <!>
-	//CLEAR;
+	CLEAR;
 	
 	header();
 	printf("Bienvenue, que souhaitez-vous faire ?\n");
@@ -81,4 +81,3 @@ int main(void){
   
 	return 0;
 }
-
