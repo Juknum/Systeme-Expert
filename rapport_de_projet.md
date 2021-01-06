@@ -328,12 +328,16 @@ Début
     fin tant que
     fact_buffer = suiv(fact_buffer)
   fin tant que
-  retourner know_fact
+  retourner known_fact
 
 Fin
 ```
 
-> On crée des variables tampons. Tant que la base de fait tampon n'est pas vide, 
+> On crée des variables tampons. Tant que la base de fait tampon n'est pas vide et tant que la base de connaissance tampon n'est pas vide, on crée une variable tampon de type prémisse qui prend la valeur de la prémisse de la règle suivant la règle de tête de la base de connaissance.
+> Tant que cette variable n'est pas indéfinie, si son contenu est le même que celui de la base de fait tampon, on ajoute la règle correspondant à cette prémisse à la base de connaissance know_fact. Une fois la boucle si terminée, la prémisse tampon pointe sur son élément suivant et on recommence.
+> Une fois la boucle "tant que la prémisse tampon n'est pas indéfinie" est terminée, la base de connaissance tampon pointe sur son élément suivant, et on recommence.
+>  Une fois la boucle "tant que la base de connaissance tampon n'est pas indéfinie" est terminée, la base de fait tampon pointe sur son élément suivant, et on recommence.
+> Enfin, une fois la boucle "tant que la base de fait tampon n'est pas indéfinie" est terminée, on retourne la base de connaissance know_fact.
 
 **Moteur d'inférence**
 ```pseudocode
